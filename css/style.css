@@ -1,0 +1,94 @@
+/*
+COLORS:
+Green: #00c200
+Purple: #6871ff
+Magneta: #c930c7
+Cyan: #00C5C7
+Grey: #c7c7c7
+White: #feffff
+Black: #191919
+*/
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  font-size: 62.5%; }
+
+body {
+  box-sizing: border-box;
+  background-color: #191919; }
+
+body {
+  font-family: 'Space Mono', monospace;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #feffff;
+  padding: 3rem;
+  box-sizing: border-box; }
+
+.heading-primary--main {
+  display: block;
+  font-size: 4rem;
+  font-weight: 40rem; }
+  .heading-primary--main1 {
+    color: #00C5C7; }
+
+.heading-primary--sub {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: 'Open Sans', sans-serif;
+  color: #c7c7c7; }
+
+.header {
+  height: 95vh; }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: left; }
+
+.navigation__list {
+  position: absolute;
+  top: 0;
+  left: 0;
+  list-style: none;
+  width: 30%;
+  margin: 2rem 0 0 3rem; }
+  .navigation__list:not(:last-child) {
+    margin-right: 4rem; }
+
+.navigation__item {
+  float: left;
+  width: calc((100% / 3) - 4rem); }
+
+.navigation__link {
+  font-size: 2rem;
+  color: #feffff; }
+  .navigation__link:link, .navigation__link:visited {
+    display: inline-block;
+    text-decoration: none;
+    background-image: linear-gradient(120deg, transparent 0%, transparent 50%, #c930c7 50%);
+    background-size: 250%;
+    transition: all .3s; }
+  .navigation__link:hover, .navigation__link:active {
+    background-position: 100%;
+    transform: translateY(-1rem); }
+  .navigation__link--active {
+    padding-bottom: 2px;
+    border-bottom: 2px solid #6871ff; }
+    .navigation__link--active:hover, .navigation__link--active:active {
+      border-bottom: none; }
+
+.navigation .logo {
+  font-size: 2rem;
+  float: right; }
+  .navigation .logo a {
+    text-decoration: none;
+    color: #feffff;
+    background-color: #c930c7; }
