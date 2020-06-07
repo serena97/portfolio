@@ -34,14 +34,18 @@
             display: block;
             margin-top: 10px;
             height: 3px;
-            width: 0;
             background: $color-line;
-            transition: width .3s !important;
+            animation: customwidth .5s ;
         }
 
-        &:hover .navigation__link:hover::after {
-            width: 100%;
-        }
+        @keyframes customwidth {
+            0% {
+              width: 0%;
+            }
+            100% {
+              width: 100%;
+            }
+          }
     }
     
     &__link {
@@ -53,7 +57,7 @@
         &:visited {
             background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-secondary-highlight 50%);
             background-size: 250%;
-            transition: all .4s;
+            transition: all .5s;
         }
 
         &:hover,
@@ -76,30 +80,6 @@
         }
 
     }
-
-
-    // &__link--active:hover &__span:hover {
-    //     padding-bottom: 0;
-    //     border-bottom: none;
-    // }  
-
-    // &__link--active &__span {
-    //     display: inherit;
-    //     height: inherit;
-    //     line-height: inherit;
-    //     position: inherit;
-    // } 
-
-    // &__span {
-    //     display: table;
-    //     height: 0px;
-    //     line-height: 0;
-    //     position: absolute;
-    // }
-
-    // &__link:hover &__span {
-    //     @include border;
-    // }
 
     .logo {
         float: right;
