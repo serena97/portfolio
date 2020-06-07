@@ -33,7 +33,16 @@ body {
 .heading-primary--main {
   display: block;
   font-size: 4rem;
-  font-weight: 40rem; }
+  font-weight: 40rem;
+  animation: moveInTop 1s; }
+
+@keyframes moveInTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-3rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
   .heading-primary--main1 {
     color: #00C5C7; }
 
@@ -42,7 +51,18 @@ body {
   font-size: 2rem;
   font-weight: 700;
   font-family: 'Open Sans', sans-serif;
-  color: #c7c7c7; }
+  color: #c7c7c7;
+  animation: 2s 0s moveInTopDelay; }
+
+@keyframes moveInTopDelay {
+  0% {
+    opacity: 0; }
+  50% {
+    opacity: 0;
+    transform: translateY(-3rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
 
 .header {
   height: 95vh; }

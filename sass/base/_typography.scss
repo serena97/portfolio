@@ -13,9 +13,20 @@ body {
         display: block;
         font-size: $heading-fontsize-main;
         font-weight: 40rem;
-        // animation-name: moveInLeft;
-        // animation-duration: 1s;
-        // animation-timing-function: ease-out;
+        animation: moveInTop 1s;
+
+        @keyframes moveInTop{
+            0% {
+                opacity: 0;
+                transform: translateY(-3rem);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translate(0);
+            }
+        }
+
         &1{
             color: $color-highlight;
         }
@@ -27,6 +38,22 @@ body {
         font-weight: 700;
         font-family: 'Open Sans', sans-serif;
         color: $color-secondary-text;
-        // animation: moveInRight 1s ease-out;
+        animation: 2s 0s moveInTopDelay;
+
+        @keyframes moveInTopDelay{
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 0;
+                transform: translateY(-3rem);
+            }
+            
+            100% {
+                opacity: 1;
+                transform: translate(0);
+            }
+        }
     }
 }

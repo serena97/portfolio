@@ -15,7 +15,6 @@
     }
 
     &__item {
-        // width: calc((100% / 3) - #{$gutter-horizontal});
         padding: 30px;
         display: inline-block;
         transition: all .4s; 
@@ -35,7 +34,7 @@
             margin-top: 10px;
             height: 3px;
             background: $color-line;
-            animation: customwidth .5s ;
+            animation: customwidth .5s;
         }
 
         @keyframes customwidth {
