@@ -1,0 +1,14 @@
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+@mixin border {
+    & {
+        padding-bottom: 2px;
+        border-bottom: 2px solid $color-line;
+    }
+}

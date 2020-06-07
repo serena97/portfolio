@@ -53,42 +53,59 @@ body {
     transform: translate(-50%, -50%);
     text-align: left; }
 
-.navigation__list {
-  position: absolute;
-  top: 0;
-  left: 0;
-  list-style: none;
-  width: 30%;
-  margin: 2rem 0 0 3rem; }
-  .navigation__list:not(:last-child) {
-    margin-right: 4rem; }
-
-.navigation__item {
-  float: left;
-  width: calc((100% / 3) - 4rem); }
-
-.navigation__link {
-  font-size: 2rem;
-  color: #feffff; }
-  .navigation__link:link, .navigation__link:visited {
+.navigation {
+  backface-visibility: hidden;
+  font-size: 2rem; }
+  .navigation__list {
+    position: absolute;
+    top: 0;
+    left: 0;
+    list-style: none;
+    width: 30%;
+    margin: 2rem 0 0 3rem; }
+    .navigation__list:not(:last-child) {
+      margin-right: 4rem; }
+  .navigation__item {
+    padding: 30px;
     display: inline-block;
-    text-decoration: none;
-    background-image: linear-gradient(120deg, transparent 0%, transparent 50%, #c930c7 50%);
-    background-size: 250%;
-    transition: all .3s; }
-  .navigation__link:hover, .navigation__link:active {
-    background-position: 100%;
-    transform: translateY(-1rem); }
-  .navigation__link--active {
-    padding-bottom: 2px;
-    border-bottom: 2px solid #6871ff; }
-    .navigation__link--active:hover, .navigation__link--active:active {
-      border-bottom: none; }
-
-.navigation .logo {
-  font-size: 2rem;
-  float: right; }
-  .navigation .logo a {
-    text-decoration: none;
+    transition: all .4s; }
+    .navigation__item:hover {
+      -webkit-transform: translateY(-1rem);
+      transform: translateY(-1rem); }
+    .navigation__item:hover .navigation__link {
+      background-position: 100%; }
+    .navigation__item:hover .navigation__link::after {
+      content: '';
+      display: block;
+      margin-top: 10px;
+      height: 3px;
+      width: 0;
+      background: #6871ff;
+      transition: width .3s !important; }
+    .navigation__item:hover .navigation__link:hover::after {
+      width: 100%; }
+  .navigation__link {
     color: #feffff;
-    background-color: #c930c7; }
+    text-decoration: none; }
+    .navigation__link:link, .navigation__link:visited {
+      background-image: linear-gradient(120deg, transparent 0%, transparent 50%, #c930c7 50%);
+      background-size: 250%;
+      transition: all .4s; }
+    .navigation__link:hover, .navigation__link:active {
+      background-position: 100%;
+      -webkit-transform: translateY(-1rem);
+      transform: translateY(-1rem); }
+    .navigation__link--active {
+      background-color: #c930c7; }
+    .navigation__link--active::after {
+      content: '';
+      display: block;
+      margin-top: 10px;
+      height: 3px;
+      background: #6871ff; }
+  .navigation .logo {
+    float: right; }
+    .navigation .logo a {
+      text-decoration: none;
+      color: #feffff;
+      background-color: #c930c7; }
