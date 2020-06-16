@@ -57,3 +57,14 @@ body {
         }
     }
 }
+
+.heading-secondary {
+    display: block;
+    font-size: $heading-fontsize-secondary;
+}
+
+.heading-arrow {
+    font-size: $heading-fontsize-main;
+    color: $color-secondary-line;
+    margin: 3rem;
+}

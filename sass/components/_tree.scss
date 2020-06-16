@@ -1,0 +1,56 @@
+.tree {
+    line-height: 2rem;
+    font-size: 3rem;
+    margin-left: 8rem;
+    color: $color-secondary-line;
+
+    &__text {
+        cursor: pointer;
+        font-size: 2.5rem;
+    }
+
+    &__text:active {
+        background-color: $color-tertiary-highlight;
+        color: $color-secondary-text;
+    }
+
+    &__text--citi {
+        background-color: $color-tertiary-highlight;
+        color: $color-secondary-text;
+    }
+
+    &__subtree {
+
+        &--expand {
+            opacity: 1;
+        }
+
+        &--collapse {
+            opacity: 0;
+            height: 0;
+            transition: all 1s;
+        }
+    }
+
+    @keyframes expand-tree{
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    & li {
+        list-style: none;
+
+        @for $i from 1 through 7 {
+            &:nth-child(#{$i}) {
+                animation: expand-tree 7s;
+                animation-delay: 1s * $i;
+            }
+        }
+    }
+}
+
