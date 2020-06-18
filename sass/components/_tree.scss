@@ -7,6 +7,8 @@
     &__text {
         cursor: pointer;
         font-size: 2.5rem;
+        margin-left: $branch-width + .5rem;
+        padding: 5px;
     }
 
     &__text:active {
@@ -23,6 +25,40 @@
 
         &--expand {
             opacity: 1;
+            & .tree__branch--vertical{
+                @include tree-branch-line(3px, 0px);
+                @include increase-height-animation(5rem);
+                animation-delay: 2s;
+            }
+
+            & .tree__branch--vertical:first-child:after {
+                margin-top: 20px;
+            }
+
+            & .tree__branch--vertical:after {
+                @include increase-height-animation(5rem);
+                @include tree-branch-line(3px, 0px);
+                display: inline;
+                animation-delay: 2s;
+                position: absolute;
+                content: '';
+                border-right: 3px solid $color-secondary-line;
+                margin-left: 5rem;
+            }
+
+            & .tree__branch--horizontal {
+                animation: increase-width 2s;
+                @include tree-branch-line(0px, 3px);
+                display: flex;
+                align-items: center;
+                animation-delay: 3s;
+                margin-left: 5rem;
+            }
+
+            & .tree__text {
+                @include fade-in;
+                animation-delay: 3s;
+            }
         }
 
         &--collapse {
@@ -32,25 +68,28 @@
         }
     }
 
-    @keyframes expand-tree{
-        0% {
-            opacity: 0;
-        }
-
+    & li {
+        list-style: none;
+    }
+ 
+    @keyframes increase-width{
         100% {
-            opacity: 1;
+            width: $branch-width;
         }
     }
 
-    & li {
-        list-style: none;
+    &__branch{
+        &--vertical {
+            @include tree-branch-line(3px, 0px);
+            animation: increase-height 2s;
+        }
 
-        @for $i from 1 through 7 {
-            &:nth-child(#{$i}) {
-                animation: expand-tree 7s;
-                animation-delay: 1s * $i;
-            }
+        &--horizontal {
+            @include tree-branch-line(0px, 3px);
+            display: flex;
+            align-items: center;
+            animation: increase-width 2s;
+            animation-delay: 1s;
         }
     }
 }
-

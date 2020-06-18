@@ -12,3 +12,35 @@
         border-bottom: 2px solid $color-line;
     }
 }
+
+@mixin tree-branch-line($width, $height) {
+    & {
+        width: $width;
+        height: $height;
+        background: $color-secondary-line;
+        animation-fill-mode: forwards;
+    }
+}
+
+@mixin increase-height-animation($height) {
+    animation: increase-height 2s;
+    @keyframes increase-height{
+        100% {
+            height: $height;
+        }
+    }
+}
+
+@mixin fade-in {
+    animation: fade-in 2s;
+    animation-fill-mode: both;
+    @keyframes fade-in{
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+}
