@@ -31,9 +31,42 @@
     }
 }
 
-@mixin fade-in {
-    animation: fade-in 2s;
-    animation-fill-mode: both;
+@mixin increase-width-animation {
+    display: flex;
+    align-items: center;
+    animation: increase-width 2s;
+    animation-fill-mode: both !important;
+    @keyframes increase-width {
+        0% {
+            opacity: 0;
+            width: 0;
+        }
+
+        66% {
+            opacity: 1;
+        }
+        
+        100% {
+            width: $branch-width;
+        }
+    }
+}
+
+
+@mixin collapse-height-animation {
+    animation: collapse-height 2s !important;
+    @keyframes collapse-height{
+        0% {
+            height: 100%;
+        }
+        100% {
+            height: 0;
+        }
+    }
+}
+
+@mixin fade-in($time: 2s) {
+    animation: fade-in $time;
     @keyframes fade-in{
         0% {
             opacity: 0;
