@@ -58,6 +58,13 @@ body {
     }
 }
 
+.work-experience {
+    &--title {
+        font-family: 'Space Mono', monospace;
+        font-size: $heading-fontsize-tertiary;
+    }
+}
+
 .heading-secondary {
     display: block;
     font-size: $heading-fontsize-secondary;
