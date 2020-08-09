@@ -64,13 +64,163 @@ body {
     opacity: 1;
     transform: translate(0); } }
 
+.heading-secondary {
+  display: block;
+  font-size: 3rem; }
+
+.heading-tertiary {
+  font-family: 'Space Mono', monospace;
+  font-size: 2.5rem; }
+
+.heading-quarternary {
+  font-family: 'Space Mono', monospace;
+  font-size: 1.5rem; }
+
+.heading-arrow {
+  font-size: 4rem;
+  color: #00c200;
+  margin: 3rem; }
+
+.tree {
+  line-height: 2rem;
+  font-size: 3rem;
+  padding-left: 10rem;
+  color: #00c200; }
+  .tree .tree__branch--vertical:after {
+    display: inline;
+    position: absolute;
+    content: '';
+    margin-left: 5rem; }
+
+.is-visible .tree__text {
+  cursor: pointer;
+  font-size: 2.5rem;
+  margin-left: 3.5rem;
+  padding: 5px;
+  color: #00c200; }
+
+.is-visible .tree__text:active {
+  background-color: #6484a8;
+  color: #c7c7c7; }
+
+.is-visible .tree__subtree--expand {
+  opacity: 1; }
+  .is-visible .tree__subtree--expand .tree__branch--vertical {
+    animation-delay: 2s; }
+  .is-visible .tree__subtree--expand .tree__branch--vertical:first-child:after {
+    margin-top: 20px; }
+  .is-visible .tree__subtree--expand .tree__branch--vertical:after {
+    animation: increase-height 2s;
+    animation-delay: 2s; }
+    .is-visible .tree__subtree--expand .tree__branch--vertical:after {
+      width: 3px;
+      height: 0px;
+      background: #00c200;
+      animation-fill-mode: forwards; }
+
+@keyframes increase-height {
+  100% {
+    height: 5rem; } }
+  .is-visible .tree__subtree--expand .tree__branch--horizontal {
+    display: flex;
+    align-items: center;
+    animation: increase-width 2s;
+    animation-fill-mode: both !important;
+    animation-delay: 3s;
+    margin-left: 5rem; }
+    .is-visible .tree__subtree--expand .tree__branch--horizontal {
+      width: 0px;
+      height: 3px;
+      background: #00c200;
+      animation-fill-mode: forwards; }
+
+@keyframes increase-width {
+  0% {
+    opacity: 0;
+    width: 0; }
+  66% {
+    opacity: 1; }
+  100% {
+    width: 3rem; } }
+  .is-visible .tree__subtree--expand .tree__text {
+    animation: fade-in 2s; }
+
+@keyframes fade-in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+.is-visible .tree__subtree--collapse {
+  opacity: 0;
+  height: 0; }
+
+.is-visible .tree__subtree--collapse + .tree__branch--vertical {
+  animation: move-up-illusion 2s;
+  animation-fill-mode: forwards; }
+
+@keyframes move-up-illusion {
+  0% {
+    height: 12rem; }
+  100% {
+    height: 6rem; } }
+
+.is-visible .tree li {
+  list-style: none; }
+
+.is-visible .tree__branch--vertical {
+  animation: increase-height 2s; }
+  .is-visible .tree__branch--vertical {
+    width: 3px;
+    height: 0px;
+    background: #00c200;
+    animation-fill-mode: forwards; }
+
+@keyframes increase-height {
+  100% {
+    height: 5rem; } }
+
+.is-visible .tree__branch--horizontal {
+  display: flex;
+  align-items: center;
+  animation: increase-width 2s;
+  animation-fill-mode: both !important;
+  animation-delay: 1s; }
+  .is-visible .tree__branch--horizontal {
+    width: 0px;
+    height: 3px;
+    background: #00c200;
+    animation-fill-mode: forwards; }
+
+@keyframes increase-width {
+  0% {
+    opacity: 0;
+    width: 0; }
+  66% {
+    opacity: 1; }
+  100% {
+    width: 3rem; } }
+
+#tree__text--citi {
+  background-color: #6484a8;
+  color: #c7c7c7; }
+
+.container {
+  display: flex;
+  flex-wrap: wrap; }
+  .container div {
+    flex: 1 1 0;
+    box-sizing: border-box; }
+  .container .work-experience {
+    flex: 2 1 0; }
+
 .header {
-  height: 95vh; }
+  min-height: 95vh; }
   .header__text-box {
     position: absolute;
     top: 40%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -40%);
     text-align: left; }
 
 .navigation {
@@ -132,3 +282,43 @@ body {
       text-decoration: none;
       color: #feffff;
       background-color: #c930c7; }
+
+.section-experience {
+  background-color: #191919;
+  min-height: 100vh; }
+  .section-experience:not(:first-child) {
+    padding: 5rem 0; }
+  .section-experience .is-visible .work-experience {
+    animation: 2s 0s moveInRightDelay;
+    padding-top: calc(5rem / 2); }
+
+@keyframes moveInRightDelay {
+  0% {
+    opacity: 0; }
+  50% {
+    opacity: 0;
+    transform: translateX(3rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+    .section-experience .is-visible .work-experience--title {
+      overflow: hidden;
+      /* Ensures the content is not revealed until the animation */
+      border-right: .15em solid orange;
+      /* The typwriter cursor */
+      white-space: nowrap;
+      /* Keeps the content on a single line */
+      width: 70rem;
+      animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite; }
+
+@keyframes typing {
+  from {
+    width: 0; }
+  to {
+    width: 80%; } }
+
+@keyframes blink-caret {
+  from, to {
+    border-color: transparent; }
+  50% {
+    border-color: orange; } }

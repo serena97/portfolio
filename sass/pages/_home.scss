@@ -4,4 +4,50 @@
         padding: 5rem 0; 
     }
     min-height: 100vh;
+
+    .is-visible {
+        .work-experience {
+            animation: 2s 0s moveInRightDelay;
+
+            @keyframes moveInRightDelay{
+                0% {
+                    opacity: 0;
+                }
+
+                50% {
+                    opacity: 0;
+                    transform: translateX(3rem);
+                }
+                
+                100% {
+                    opacity: 1;
+                    transform: translate(0);
+                }
+            }
+
+            padding-top: calc(#{$branch-height} / 2);
+
+            &--title {
+                overflow: hidden; /* Ensures the content is not revealed until the animation */
+                border-right: .15em solid orange; /* The typwriter cursor */
+                white-space: nowrap; /* Keeps the content on a single line */
+                // margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+                // letter-spacing: .15em; /* Adjust as needed */
+                width: 70rem;
+                animation: 
+                    typing 3.5s steps(40, end),
+                    blink-caret .75s step-end infinite;
+            }
+        }
+    }
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 80% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange; }
 }

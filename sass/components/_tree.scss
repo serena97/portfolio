@@ -41,7 +41,7 @@
 
                 & .tree__branch--vertical:after {
                     @include tree-branch-line(3px, 0px);
-                    @include increase-height-animation(5rem);
+                    @include increase-height-animation($branch-height);
                     animation-delay: 2s;
                 }
 
@@ -84,7 +84,7 @@
         &__branch{
             &--vertical {
                 @include tree-branch-line(3px, 0px);
-                @include increase-height-animation(5rem);
+                @include increase-height-animation($branch-height);
             }
 
             &--horizontal {
