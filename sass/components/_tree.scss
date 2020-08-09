@@ -96,9 +96,13 @@
     }
 }
 
-.tree__text.selected {
+.tree__text--selectable.selected {
     background-color: $color-tertiary-highlight !important;
     color: $color-secondary-text !important;
+}
+
+#citi {
+    cursor: auto;
 }
 
 // 1. fix animation when expand second time - Done

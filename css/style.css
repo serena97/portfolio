@@ -201,9 +201,12 @@ body {
   100% {
     width: 3rem; } }
 
-.tree__text.selected {
+.tree__text--selectable.selected {
   background-color: #6484a8 !important;
   color: #c7c7c7 !important; }
+
+#citi {
+  cursor: auto; }
 
 .container {
   display: flex;
@@ -292,6 +295,8 @@ body {
     width: 60rem; }
   .section-experience .commodities .work-experience--title {
     width: 70rem; }
+  .section-experience .sky .work-experience--title {
+    width: 60rem; }
   .section-experience .is-visible .work-experience {
     padding-top: calc(5rem / 2); }
     .section-experience .is-visible .work-experience--details {

@@ -36,26 +36,26 @@ function collapseTree() {
     element.classList.remove("tree__subtree--expand");
 }
 
-const selectionList = document.querySelectorAll('.tree__text');
+const selectionList = document.querySelectorAll('.tree__text--selectable');
 selectionList.forEach(element => {
   element.addEventListener('click', () => selectItem(element));
 });
 
-function selectItem(element) {
+async function selectItem(element) {
     selectionList.forEach(e => e.classList.remove("selected"));
-    document.querySelectorAll(".work-experience--child").forEach(e => {
+    const children = document.querySelectorAll(".work-experience--child")
+    for (const e of children) {
         e.style.visibility = "hidden"
         e.style.height = 0;
         e.children[0].classList.remove("work-experience--title"); //for animation to rerender
         e.children[1].classList.remove("work-experience--details");
-    });
-
+    };
     element.classList.add("selected");
     let div = document.getElementsByClassName(element.id)[0];
     div.style.visibility = "visible"; 
     div.style.height = "100%"; 
+    void div.children[0].offsetWidth; // https://stackoverflow.com/questions/60686489/what-purpose-does-void-element-offsetwidth-serve
+    void div.children[1].offsetWidth;
     div.children[0].classList.add("work-experience--title");
     div.children[1].classList.add("work-experience--details");
-    console.log(div);
-    console.log(element.id);
 }
