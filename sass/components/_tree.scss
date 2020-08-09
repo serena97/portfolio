@@ -96,12 +96,12 @@
     }
 }
 
-#tree__text--citi {
-    background-color: $color-tertiary-highlight;
-    color: $color-secondary-text;
+.tree__text.selected {
+    background-color: $color-tertiary-highlight !important;
+    color: $color-secondary-text !important;
 }
 
 // 1. fix animation when expand second time - Done
-// 2. change tree text to selected 
+// 2. change tree text to selected - pending
 // 3. animate collapse - Done
 // 4. make animation only happen when scroll - Done

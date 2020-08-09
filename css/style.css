@@ -201,9 +201,9 @@ body {
   100% {
     width: 3rem; } }
 
-#tree__text--citi {
-  background-color: #6484a8;
-  color: #c7c7c7; }
+.tree__text.selected {
+  background-color: #6484a8 !important;
+  color: #c7c7c7 !important; }
 
 .container {
   display: flex;
@@ -288,9 +288,14 @@ body {
   min-height: 100vh; }
   .section-experience:not(:first-child) {
     padding: 5rem 0; }
+  .section-experience .fx .work-experience--title {
+    width: 60rem; }
+  .section-experience .commodities .work-experience--title {
+    width: 70rem; }
   .section-experience .is-visible .work-experience {
-    animation: 2s 0s moveInRightDelay;
     padding-top: calc(5rem / 2); }
+    .section-experience .is-visible .work-experience--details {
+      animation: 5s 0s moveInRightDelay; }
 
 @keyframes moveInRightDelay {
   0% {
@@ -308,7 +313,6 @@ body {
       /* The typwriter cursor */
       white-space: nowrap;
       /* Keeps the content on a single line */
-      width: 70rem;
       animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite; }
 
 @keyframes typing {

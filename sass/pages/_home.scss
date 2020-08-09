@@ -5,25 +5,39 @@
     }
     min-height: 100vh;
 
+    .fx {
+        .work-experience--title {
+            width: 60rem;
+        }
+    }
+
+    .commodities {
+        .work-experience--title {
+            width: 70rem;
+        }
+    }
+
     .is-visible {
         .work-experience {
-            animation: 2s 0s moveInRightDelay;
+            &--details {
+                animation: 5s 0s moveInRightDelay;
+                @keyframes moveInRightDelay{
+                    0% {
+                        opacity: 0;
+                    }
 
-            @keyframes moveInRightDelay{
-                0% {
-                    opacity: 0;
-                }
-
-                50% {
-                    opacity: 0;
-                    transform: translateX(3rem);
-                }
-                
-                100% {
-                    opacity: 1;
-                    transform: translate(0);
+                    50% {
+                        opacity: 0;
+                        transform: translateX(3rem);
+                    }
+                    
+                    100% {
+                        opacity: 1;
+                        transform: translate(0);
+                    }
                 }
             }
+            
 
             padding-top: calc(#{$branch-height} / 2);
 
@@ -33,7 +47,6 @@
                 white-space: nowrap; /* Keeps the content on a single line */
                 // margin: 0 auto; /* Gives that scrolling effect as the typing happens */
                 // letter-spacing: .15em; /* Adjust as needed */
-                width: 70rem;
                 animation: 
                     typing 3.5s steps(40, end),
                     blink-caret .75s step-end infinite;

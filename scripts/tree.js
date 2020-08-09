@@ -1,5 +1,5 @@
-document.getElementById("tree__text--citi").addEventListener("click", expandTree);
-document.getElementById("tree__text--sky").addEventListener("click", collapseTree);
+document.getElementById("citi").addEventListener("click", expandTree);
+document.getElementById("sky").addEventListener("click", collapseTree);
 var element = document.getElementById("tree__subtree");
 
 // from https://cssanimation.rocks/scroll-animations/
@@ -20,8 +20,6 @@ const observer2 = new IntersectionObserver(callback);
 const target2 = document.querySelector(".show-on-scroll2");
 observer2.observe(target2);
 
-
-
 async function expandTree() {
     for(child of element.children) {
         if (child.className == 'tree__branch--vertical') { //check if style child is there already
@@ -38,3 +36,26 @@ function collapseTree() {
     element.classList.remove("tree__subtree--expand");
 }
 
+const selectionList = document.querySelectorAll('.tree__text');
+selectionList.forEach(element => {
+  element.addEventListener('click', () => selectItem(element));
+});
+
+function selectItem(element) {
+    selectionList.forEach(e => e.classList.remove("selected"));
+    document.querySelectorAll(".work-experience--child").forEach(e => {
+        e.style.visibility = "hidden"
+        e.style.height = 0;
+        e.children[0].classList.remove("work-experience--title"); //for animation to rerender
+        e.children[1].classList.remove("work-experience--details");
+    });
+
+    element.classList.add("selected");
+    let div = document.getElementsByClassName(element.id)[0];
+    div.style.visibility = "visible"; 
+    div.style.height = "100%"; 
+    div.children[0].classList.add("work-experience--title");
+    div.children[1].classList.add("work-experience--details");
+    console.log(div);
+    console.log(element.id);
+}
