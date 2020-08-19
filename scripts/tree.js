@@ -1,6 +1,7 @@
 document.getElementById("citi").addEventListener("click", expandTree);
 document.getElementById("sky").addEventListener("click", collapseTree);
 var element = document.getElementById("tree__subtree");
+var verticalBranches = [];
 
 // from https://cssanimation.rocks/scroll-animations/
 const callback = function(entries) {
@@ -9,6 +10,9 @@ const callback = function(entries) {
             entry.target.classList.add("is-visible"); // if visible is set remove it, otherwise add it
         } else {
             entry.target.classList.remove("is-visible");
+            for(v of verticalBranches) {
+                v.innerHTML = "#tree__subtree .tree__branch--vertical:after { animation-delay: 2s; }";
+            }
         }
     });
 };
@@ -25,6 +29,7 @@ async function expandTree() {
         if (child.className == 'tree__branch--vertical') { //check if style child is there already
             var styleElem = child.appendChild(document.createElement("style"));
             styleElem.innerHTML = "#tree__subtree .tree__branch--vertical:after { animation-delay: 0s; }";
+            verticalBranches.push(styleElem);
         }
     }
     element.classList.remove("tree__subtree--collapse");
