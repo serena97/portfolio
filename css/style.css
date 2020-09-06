@@ -8,6 +8,19 @@ Grey: #c7c7c7
 White: #feffff
 Black: #191919
 */
+/*
+0 - 600px: Phone
+900 - 1200px: Tablet
+[1200 - 1800px]: desktop
+1800 + big desktop
+
+Breakpoint argument choices:
+- phone
+- tab-port
+- tab-land
+- big desktop
+1em = 16px, 600px/16 = 37.5em
+*/
 *,
 *::after,
 *::before {
@@ -17,6 +30,18 @@ Black: #191919
 
 html {
   font-size: 62.5%; }
+  @media (max-width: 37.5em) {
+    html {
+      font-size: 50%; } }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 60%; } }
+  @media (min-width: 112.5em) {
+    html {
+      font-size: 90%; } }
 
 body {
   box-sizing: border-box;
@@ -29,6 +54,9 @@ body {
   color: #feffff;
   padding: 3rem;
   box-sizing: border-box; }
+
+.navigation {
+  font-size: 2rem; }
 
 .heading-primary--main {
   display: block;
@@ -218,28 +246,40 @@ body {
     flex: 2 1 0; }
 
 .header {
-  min-height: 95vh; }
+  min-height: 80vh; }
   .header__text-box {
     position: absolute;
     top: 40%;
     left: 50%;
     transform: translate(-50%, -40%);
     text-align: left; }
+    @media (max-width: 56.25em) {
+      .header__text-box {
+        position: relative;
+        transform: translate(0%, 0%);
+        padding: 2.5rem;
+        left: 0; } }
+    @media (max-width: 37.5em) {
+      .header__text-box {
+        position: relative;
+        transform: translate(0%, 15%);
+        padding: 0rem;
+        left: 0; } }
 
 .navigation {
   backface-visibility: hidden;
-  font-size: 2rem; }
+  min-height: 15vh; }
   .navigation__list {
     position: absolute;
     top: 0;
     left: 0;
     list-style: none;
-    width: 30%;
+    width: 80%;
     margin: 2rem 0 0 3rem; }
     .navigation__list:not(:last-child) {
       margin-right: 4rem; }
   .navigation__item {
-    padding: 30px;
+    padding: 3rem;
     display: inline-block;
     transition: all .4s; }
     .navigation__item:hover {
@@ -280,7 +320,8 @@ body {
       height: 3px;
       background: #6871ff; }
   .navigation .logo {
-    float: right; }
+    float: right;
+    margin-top: 2rem; }
     .navigation .logo a {
       text-decoration: none;
       color: #feffff;
@@ -288,7 +329,7 @@ body {
 
 .section-experience {
   background-color: #191919;
-  min-height: 100vh; }
+  min-height: 70vh; }
   .section-experience:not(:first-child) {
     padding: 5rem 0; }
   .section-experience .fx .work-experience--title {

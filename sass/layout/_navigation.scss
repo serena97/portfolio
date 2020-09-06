@@ -1,13 +1,13 @@
 .navigation {
     backface-visibility: hidden;
-    font-size: $nav-fontsize;
+    min-height: 15vh;;
 
     &__list {
         position: absolute;
         top: 0;
         left: 0;
         list-style: none;
-        width: 30%;
+        width: 80%;
         &:not(:last-child) {
             margin-right: $gutter-horizontal;
         }
@@ -15,7 +15,7 @@
     }
 
     &__item {
-        padding: 30px;
+        padding: $nav-item-padding;
         display: inline-block;
         transition: all .4s; 
 
@@ -82,6 +82,7 @@
 
     .logo {
         float: right;
+        margin-top: $nav-margin-top;
         & a {
             text-decoration: none;
             color: $color-text;
