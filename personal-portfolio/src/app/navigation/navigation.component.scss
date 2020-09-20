@@ -1,0 +1,94 @@
+@import '../shared/abstracts/variables';
+
+.navigation {
+    backface-visibility: hidden;
+    min-height: 15vh;;
+
+    &__list {
+        position: absolute;
+        top: 0;
+        left: 0;
+        list-style: none;
+        width: 80%;
+        &:not(:last-child) {
+            margin-right: $gutter-horizontal;
+        }
+        margin: 2rem 0 0 3rem;
+    }
+
+    &__item {
+        padding: $nav-item-padding;
+        display: inline-block;
+        transition: all .4s; 
+
+        &:hover {
+            -webkit-transform: translateY(-1rem);
+            transform: translateY(-1rem);
+        }
+
+        &:hover .navigation__link{
+            background-position: 100%;
+        }
+
+        &:hover .navigation__link::after{
+            content: '';
+            display: block;
+            margin-top: 10px;
+            height: 3px;
+            background: $color-line;
+            animation: customwidth .5s;
+        }
+
+        @keyframes customwidth {
+            0% {
+              width: 0%;
+            }
+            100% {
+              width: 100%;
+            }
+          }
+    }
+    
+    &__link {
+        color: $color-text;
+        text-decoration: none;
+        
+
+        &:link, 
+        &:visited {
+            background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-secondary-highlight 50%);
+            background-size: 250%;
+            transition: all .5s;
+        }
+
+        &:hover,
+        &:active {
+            background-position: 100%;
+            -webkit-transform: translateY(-1rem);
+            transform: translateY(-1rem);
+        }
+
+        &--active {
+            background-color: $color-secondary-highlight;
+        }
+
+        &--active::after {
+            content: '';
+            display: block;
+            margin-top: 10px;
+            height: 3px;
+            background: $color-line;
+        }
+
+    }
+
+    .logo {
+        float: right;
+        margin-top: $nav-margin-top;
+        & a {
+            text-decoration: none;
+            color: $color-text;
+            background-color: $color-secondary-highlight;
+        }
+    }
+}

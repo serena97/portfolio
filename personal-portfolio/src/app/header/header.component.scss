@@ -1,0 +1,27 @@
+@import '../shared/abstracts/mixins';
+
+.header {
+    min-height: 80vh;
+
+    &__text-box {
+        @include respond(tab-port) {
+            position: relative;
+            transform: translate(0%, 0%);
+            padding: 2.5rem;
+            left: 0;
+        }
+
+        @include respond(phone) {
+            position: relative;
+            transform: translate(0%, 15%);
+            padding: 0rem;
+            left: 0;
+        }
+
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -40%);
+        text-align: left;
+    }
+}

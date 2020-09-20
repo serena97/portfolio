@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile:sass": "node-sass sass/main.scss css/style.css -w"
+    "start": "ng serve",
+    "compile:sass": "node-sass src/styles/sass/main.scss src/styles/style.css -w"
   },
   "author": "Serena Chan",
   "license": "ISC",
