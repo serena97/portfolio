@@ -8,6 +8,8 @@ import { HeaderComponent } from './header/header.component';
 import { SectionExperienceComponent } from './section-experience/section-experience.component';
 import { SectionWhoamiComponent } from './section-whoami/section-whoami.component';
 import { SectionSideProjectsComponent } from './section-side-projects/section-side-projects.component';
+import { ArtComponent } from './art/art.component';
+import { WorkComponent } from './work/work.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { SectionSideProjectsComponent } from './section-side-projects/section-si
     HeaderComponent,
     SectionExperienceComponent,
     SectionWhoamiComponent,
-    SectionSideProjectsComponent
+    SectionSideProjectsComponent,
+    ArtComponent,
+    WorkComponent
   ],
   imports: [
     BrowserModule,
