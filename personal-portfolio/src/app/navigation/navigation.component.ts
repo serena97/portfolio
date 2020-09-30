@@ -7,10 +7,16 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class NavigationComponent implements OnInit {
+  active_link: string = 'work'
 
-  constructor() { }
-
+  constructor() {
+  }
+  // https://stackoverflow.com/questions/11078509/how-to-increase-the-clickable-area-of-a-a-tag-button
   ngOnInit(): void {
+  }
+
+  onClick(name) {
+    this.active_link = name
   }
 
 }
