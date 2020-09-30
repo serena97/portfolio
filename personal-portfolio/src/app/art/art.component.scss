@@ -1,3 +1,24 @@
 .art {
-    min-height: 85vh;
+  min-height: 85vh;
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  /* xy coords starting from top left clockwise https://bennettfeely.com/clippy/ */
+  background-size: cover;
+  /* fits image in viewport */
+  background-color: #f7f7f7;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.artwork {
+  height: 500px;
+  width: 800px;
+  padding-right: 5rem;
+}
+
+img {
+  height: 100%;
+  width: 100%
 }
