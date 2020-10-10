@@ -1,36 +1,95 @@
 @import '../shared/abstracts/variables';
+@import '../shared/abstracts/mixins';
 
 .navigation {
     backface-visibility: hidden;
-    min-height: 15vh;;
+    min-height: 15vh;
+
+    &__button {
+        background-color: #feffff;
+        height: 7rem;
+        width: 7rem;
+        /* position: fixed; */
+        /* top: 6rem; */
+        float: right;
+        /* top: 3rem; */
+        /* right: 6rem; */
+        border-radius: 50%;
+        /* z-index: 2000; */
+        box-shadow: 0 1rem 3rem rgba(25, 25, 25, 0.1);
+        text-align: center;
+        cursor: pointer;
+    }
+
+    &__checkbox {
+        display: none;
+    }
+
+    &__checkbox:checked~&__background {
+        transform: scale(80);
+    }
+
+    &__checkbox:checked~&__nav {
+        opacity: 1;
+        width: 100%;
+    }
+
+    &__checkbox:checked+&__button &__icon {
+        background-color: transparent;
+    }
+
+    &__checkbox:checked+&__button &__icon::before {
+        top: 0;
+        transform: rotate(135deg);
+    }
+
+    &__checkbox:checked+&__button &__icon::after {
+        top: 0;
+        transform: rotate(-135deg);
+    }
+
+    &__button:hover &__icon::before {
+        top: -1rem;
+    }
+
+    &__button:hover &__icon::after {
+        top: 1rem;
+    }
 
     &__list {
+
+        @include respond(phone) {
+            display: none;
+        }
+
         position: absolute;
         top: 0;
         left: 0;
         list-style: none;
         width: 80%;
+
         &:not(:last-child) {
             margin-right: $gutter-horizontal;
         }
+
         margin: 2rem 0 0 3rem;
     }
 
     &__item {
         padding: $nav-item-padding;
         display: inline-block;
-        transition: all .4s; 
+        transition: all .4s;
 
         &:hover {
             -webkit-transform: translateY(-1rem);
             transform: translateY(-1rem);
         }
 
-        &:hover .navigation__link{
+        &:hover .navigation__link {
             background-position: 100%;
         }
 
-        &:hover .navigation__link::after{
+        &:hover .navigation__link::after {
             content: '';
             display: block;
             margin-top: 10px;
@@ -41,20 +100,21 @@
 
         @keyframes customwidth {
             0% {
-              width: 0%;
+                width: 0%;
             }
+
             100% {
-              width: 100%;
+                width: 100%;
             }
-          }
+        }
     }
-    
+
     &__link {
         color: $color-text;
         text-decoration: none;
-        
 
-        &:link, 
+
+        &:link,
         &:visited {
             background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-secondary-highlight 50%);
             background-size: 250%;
@@ -83,7 +143,12 @@
     }
 
     .logo {
+        @include respond(phone) {
+            float: left;
+        }
+
         float: right;
+
         // margin-top: $nav-margin-top;
         & a {
             text-decoration: none;

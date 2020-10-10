@@ -5,6 +5,10 @@ body {
     color: $color-text;
     padding: 3rem;
     box-sizing: border-box;
+
+    @include respond(phone) {
+        padding: 2rem;
+    }
 }
 
 .navigation {
@@ -19,7 +23,7 @@ body {
         font-weight: 40rem;
         animation: moveInTop 1s;
 
-        @keyframes moveInTop{
+        @keyframes moveInTop {
             0% {
                 opacity: 0;
                 transform: translateY(-3rem);
@@ -31,11 +35,11 @@ body {
             }
         }
 
-        &1{
+        &1 {
             color: $color-highlight;
         }
     }
-    
+
     &--sub {
         display: block;
         font-size: 2rem;
@@ -44,7 +48,7 @@ body {
         color: $color-secondary-text;
         animation: 2s 0s moveInTopDelay;
 
-        @keyframes moveInTopDelay{
+        @keyframes moveInTopDelay {
             0% {
                 opacity: 0;
             }
@@ -53,7 +57,7 @@ body {
                 opacity: 0;
                 transform: translateY(-3rem);
             }
-            
+
             100% {
                 opacity: 1;
                 transform: translate(0);
