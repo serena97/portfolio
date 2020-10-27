@@ -3,6 +3,10 @@
 .header {
     min-height: 80vh;
 
+    @include respond(phone) {
+        min-height: 90vh;
+    }
+
     &__text-box {
         @include respond(tab-port) {
             position: relative;

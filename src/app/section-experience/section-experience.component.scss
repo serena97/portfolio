@@ -1,11 +1,16 @@
 @import '../shared/abstracts/variables';
 @import '../shared/abstracts/mixins';
 
-.tree { // important to have the padding even when not visible or else rendering will be wrong
+.tree {
+    // important to have the padding even when not visible or else rendering will be wrong
     line-height: 2rem;
     font-size: 3rem;
     padding-left: 10rem;
     color: $color-secondary-line;
+
+    @include respond(phone) {
+        padding-left: 5rem;
+    }
 
     & .tree__branch--vertical:after {
         display: inline;
@@ -34,7 +39,8 @@
 
             &--expand {
                 opacity: 1;
-                & .tree__branch--vertical{
+
+                & .tree__branch--vertical {
                     animation-delay: 2s;
                 }
 
@@ -66,8 +72,8 @@
             }
         }
 
-        &__subtree--collapse + .tree__branch--vertical {
-            @keyframes move-up-illusion{
+        &__subtree--collapse+.tree__branch--vertical {
+            @keyframes move-up-illusion {
                 0% {
                     height: 12rem;
                 }
@@ -76,6 +82,7 @@
                     height: 6rem;
                 }
             }
+
             animation: move-up-illusion 2s;
             animation-fill-mode: forwards;
         }
@@ -83,8 +90,8 @@
         & li {
             list-style: none;
         }
-    
-        &__branch{
+
+        &__branch {
             &--vertical {
                 @include tree-branch-line(3px, 0px);
                 @include increase-height-animation($branch-height);
@@ -116,34 +123,60 @@
 
 .section-experience {
     background-color: $color-background;
+
     &:not(:first-child) {
-        padding: 5rem 0; 
+        padding: 5rem 0;
     }
+
     min-height: 70vh;
 
     .fx {
         .work-experience--title {
             width: 60rem;
+
+            @include respond(phone) {
+                width: 100%
+            }
         }
     }
 
     .commodities {
         .work-experience--title {
             width: 70rem;
+
+            @include respond(phone) {
+                width: 100%
+            }
         }
     }
 
     .sky {
         .work-experience--title {
             width: 60rem;
+
+            @include respond(phone) {
+                width: 100%
+            }
+        }
+    }
+
+    .work-experience {
+        @include respond(phone) {
+            width: $work-experience-mobile-width;
+        }
+
+        &--child {
+            margin-top: 3rem;
         }
     }
 
     .is-visible {
         .work-experience {
+
             &--details {
                 animation: 5s 0s moveInRightDelay;
-                @keyframes moveInRightDelay{
+
+                @keyframes moveInRightDelay {
                     0% {
                         opacity: 0;
                     }
@@ -152,37 +185,73 @@
                         opacity: 0;
                         transform: translateX(3rem);
                     }
-                    
+
                     100% {
                         opacity: 1;
                         transform: translate(0);
                     }
                 }
             }
-            
+
 
             padding-top: calc(#{$branch-height} / 2);
 
             &--title {
-                overflow: hidden; /* Ensures the content is not revealed until the animation */
-                border-right: .15em solid orange; /* The typwriter cursor */
-                white-space: nowrap; /* Keeps the content on a single line */
+                overflow: hidden;
+                /* Ensures the content is not revealed until the animation */
+                // border-right: .15em solid orange;
+                /* The typwriter cursor */
+                white-space: nowrap;
+                /* Keeps the content on a single line */
                 // margin: 0 auto; /* Gives that scrolling effect as the typing happens */
                 // letter-spacing: .15em; /* Adjust as needed */
-                animation: 
-                    typing 3.5s steps(40, end),
-                    blink-caret .75s step-end infinite;
+                //TODO: fix animation for mobile and uncomment this animation
+                // animation:
+                //     typing 3.5s steps(40, end),
+                //     blink-caret .75s step-end infinite;
+
             }
+
+            @include respond(phone) {
+                &--title {
+                    white-space: normal;
+                    width: $work-experience-mobile-width;
+                }
+
+                &--title::first-line {
+                    border-right: .15em solid orange;
+                    animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+                }
+
+                &--mobilesecondtitle {
+                    border-right: .15em solid orange;
+                    animation-delay: 2s;
+                    animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+                }
+            }
+
         }
     }
 }
 
 @keyframes typing {
-    from { width: 0 }
-    to { width: 80% }
+    from {
+        width: 0
+    }
+
+    to {
+        width: 80%
+    }
 }
 
 @keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: orange; }
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: orange;
+    }
 }
