@@ -93,6 +93,9 @@ Breakpoint argument choices:
 1em = 16px, 600px/16 = 37.5em
 */
 @mixin respond($breakpoint) {
+    @if $breakpoint == smallphone {
+        @media(max-width: 35em) {@content}; //600px
+    }
     @if $breakpoint == phone {
         @media(max-width: 37.5em) {@content}; //600px
     }

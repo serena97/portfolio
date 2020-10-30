@@ -158,11 +158,14 @@
     .work-experience {
         @include respond(phone) {
             width: $work-experience-mobile-width;
-        }
+            padding-left: 0rem;
 
-        &--child {
-            margin-top: 3rem;
+            &--child {
+                margin-top: 3rem;
+            }
         }
+        padding-left: 8rem; 
+
     }
 
     .is-visible {
@@ -173,6 +176,7 @@
                 animation: 2s moveInRightDelay;
                 animation-delay: 5s;
                 animation-fill-mode: forwards;
+                word-break: break-word;
 
                 @keyframes moveInRightDelay {
                     0% {
@@ -191,17 +195,29 @@
 
             &--title {
                 overflow: hidden; // make it work for desktop again
+                white-space: nowrap;
+                animation-fill-mode: forwards;
+                animation: type2 2s steps(40, end), blink-caret 0.75s step-end infinite;
+            }
+
+            &--mobilefirsttitle{
+                display: inline;
+            }
+
+            &--mobilesecondtitle {
                 display: inline;
             }
 
             @include respond(phone) {
+
                 &--title {
+                    animation: none;
                     .work-experience--mobilefirsttitle {
                         animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
                         overflow: hidden;
                         white-space: nowrap;
                         width: $work-experience-mobile-width;
-                        // display: inline-block;
+                        display: block;
                     }
     
                     .work-experience--mobilesecondtitle {
@@ -211,8 +227,8 @@
                         overflow: hidden;
                         white-space: nowrap;
                         width: $work-experience-mobile-width; // *0.6 for fx
-                        // display: inline-block;
                         animation-fill-mode: forwards; // so opacity is 1 in the end
+                        display: block;
                     }
                 }
             }

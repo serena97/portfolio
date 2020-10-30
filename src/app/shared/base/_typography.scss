@@ -74,6 +74,10 @@ body {
 .heading-tertiary {
     font-family: 'Space Mono', monospace;
     font-size: $heading-fontsize-tertiary;
+
+    @include respond(phone) {
+        font-size: 2.2rem;
+    }
 }
 
 .heading-quarternary {
