@@ -1,6 +1,29 @@
 @import '../shared/abstracts/variables';
 @import '../shared/abstracts/mixins';
 
+.linkedin {
+    height: 32px;
+    vertical-align: sub;
+    opacity: 0.85;
+}
+
+.navigation__item--icon {
+    padding: 0 0 0 3rem;
+    display: inline-block;
+    
+    & a {
+        text-decoration: none;
+        color: $color-text;
+        background-color: transparent !important;
+    }
+
+    &:hover img{
+        opacity: 1;
+        color: #c930c7;
+        box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
+    }
+}
+
 .navigation__checkbox:checked~.navigation__background {
     transform: scale(80);
 }
@@ -229,7 +252,7 @@
 
         float: right;
 
-        // margin-top: $nav-margin-top;
+        margin-top: -1.8rem;
         & a {
             text-decoration: none;
             color: $color-text;

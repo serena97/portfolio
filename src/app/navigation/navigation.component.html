@@ -8,12 +8,16 @@
             <a routerLink="/art" routerLinkActive="active" class="navigation__link" (click)="onClick('art')"
                 [ngClass]="{'navigation__link--active': this.active_link == 'art'}">Art</a>
         </li>
-        <li class="navigation__item">
-            <a href="#" class="navigation__link">Contact</a>
-        </li>
     </ul>
     <div class="logo">
         <a href="#">Serena Chan</a>
+        <li class="navigation__item--icon">
+            <div>
+                <a href ="https://www.linkedin.com/in/serena97/">
+                    <img class="linkedin" src="../../assets/linkedin.svg" alt="linkedin"/>
+                </a>
+            </div>
+        </li>
     </div>
     <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
     <label for="navi-toggle" class="navigation__button">
