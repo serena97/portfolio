@@ -115,11 +115,6 @@
     cursor: auto;
 }
 
-// 1. fix animation when expand second time - Done
-// 2. change tree text to selected - pending
-// 3. animate collapse - Done
-// 4. make animation only happen when scroll - Done
-
 
 .section-experience {
     background-color: $color-background;
@@ -135,7 +130,7 @@
             width: 60rem;
 
             @include respond(phone) {
-                width: 100%
+                width: $work-experience-mobile-width;
             }
         }
     }
@@ -145,7 +140,7 @@
             width: 70rem;
 
             @include respond(phone) {
-                width: 100%
+                width: $work-experience-mobile-width;
             }
         }
     }
@@ -174,16 +169,14 @@
         .work-experience {
 
             &--details {
-                animation: 5s 0s moveInRightDelay;
+                opacity: 0;
+                animation: 2s moveInRightDelay;
+                animation-delay: 5s;
+                animation-fill-mode: forwards;
 
                 @keyframes moveInRightDelay {
                     0% {
-                        opacity: 0;
-                    }
-
-                    50% {
-                        opacity: 0;
-                        transform: translateX(3rem);
+                        transform: translateX(5rem);
                     }
 
                     100% {
@@ -197,36 +190,29 @@
             padding-top: calc(#{$branch-height} / 2);
 
             &--title {
-                overflow: hidden;
-                /* Ensures the content is not revealed until the animation */
-                // border-right: .15em solid orange;
-                /* The typwriter cursor */
-                white-space: nowrap;
-                /* Keeps the content on a single line */
-                // margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-                // letter-spacing: .15em; /* Adjust as needed */
-                //TODO: fix animation for mobile and uncomment this animation
-                // animation:
-                //     typing 3.5s steps(40, end),
-                //     blink-caret .75s step-end infinite;
-
+                overflow: hidden; // make it work for desktop again
             }
 
             @include respond(phone) {
                 &--title {
-                    white-space: normal;
-                    width: $work-experience-mobile-width;
-                }
-
-                &--title::first-line {
-                    border-right: .15em solid orange;
-                    animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
-                }
-
-                &--mobilesecondtitle {
-                    border-right: .15em solid orange;
-                    animation-delay: 2s;
-                    animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+                    .work-experience--mobilefirsttitle {
+                        animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        width: $work-experience-mobile-width;
+                        // display: inline-block;
+                    }
+    
+                    .work-experience--mobilesecondtitle {
+                        animation: type2 2s steps(40, end), blink-caret 0.75s step-end infinite;
+                        animation-delay: 2.5s;
+                        opacity: 0;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        width: $work-experience-mobile-width; // *0.6 for fx
+                        // display: inline-block;
+                        animation-fill-mode: forwards; // so opacity is 1 in the end
+                    }
                 }
             }
 
@@ -235,23 +221,45 @@
 }
 
 @keyframes typing {
-    from {
-        width: 0
+    0% {
+        width: 0;
+        border-right: 0.15em solid orange;
     }
 
-    to {
-        width: 80%
+    99.9% {
+        border-right: 0.15em solid orange;
+    }
+
+    100% {
+        border: none;
     }
 }
 
+@keyframes type2 {
+    0% {
+      width: 0;
+      border-right: 0.15em solid orange;
+    }
+    1% {
+      opacity: 1;
+    }
+    99.9% {
+      border-right: 0.15em solid orange;
+    }
+    100% {
+      opacity: 1;
+      border: none;
+    }
+  }
+  
+
 @keyframes blink-caret {
 
-    from,
-    to {
+    from, to {
         border-color: transparent
     }
 
-    50% {
+    20% {
         border-color: orange;
     }
 }
