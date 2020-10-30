@@ -137,7 +137,27 @@
 
     .commodities {
         .work-experience--title {
-            width: 70rem;
+            width: 60rem;
+
+            animation: none !important;
+            .work-experience--mobilefirsttitle {
+                animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
+                overflow: hidden;
+                white-space: nowrap;
+                width: $work-experience-mobile-width;
+                display: block;
+            }
+
+            .work-experience--mobilesecondtitle {
+                animation: type2 2s steps(40, end), blink-caret 0.75s step-end infinite;
+                animation-delay: 2.5s;
+                opacity: 0;
+                overflow: hidden;
+                white-space: nowrap;
+                width: 40rem; // *0.6 for fx
+                animation-fill-mode: forwards; // so opacity is 1 in the end
+                display: block;
+            }
 
             @include respond(phone) {
                 width: $work-experience-mobile-width;
@@ -165,6 +185,7 @@
             }
         }
         padding-left: 8rem; 
+        width: 50%;
 
     }
 
