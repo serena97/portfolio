@@ -9,26 +9,27 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 export class WorkComponent implements OnInit {
   title = 'personal-portfolio';
   verticalBranches = [];
-  element = document.getElementById("tree__subtree");
 
-  constructor() { }
+  constructor() { 
+  }
 
   ngOnInit() {
+    const element = document.getElementById("tree__subtree");
     const expandTree = () => {
-      for (const child of Array.from(this.element.children)) {
+      for (const child of Array.from(element.children)) {
         if (child.className == 'tree__branch--vertical') { //check if style child is there already
           var styleElem = child.appendChild(document.createElement("style"));
           styleElem.innerHTML = "#tree__subtree .tree__branch--vertical:after { animation-delay: 0s; }";
           this.verticalBranches.push(styleElem);
         }
       }
-      this.element.classList.remove("tree__subtree--collapse");
-      this.element.classList.add("tree__subtree--expand");
+      element.classList.remove("tree__subtree--collapse");
+      element.classList.add("tree__subtree--expand");
     }
 
     const collapseTree = () => {
-      this.element.classList.add("tree__subtree--collapse");
-      this.element.classList.remove("tree__subtree--expand");
+      element.classList.add("tree__subtree--collapse");
+      element.classList.remove("tree__subtree--expand");
     }
 
     document.getElementById("citi").addEventListener("click", expandTree);

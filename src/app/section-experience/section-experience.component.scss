@@ -191,6 +191,7 @@
 
             &--title {
                 overflow: hidden; // make it work for desktop again
+                display: inline;
             }
 
             @include respond(phone) {
