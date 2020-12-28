@@ -105,6 +105,9 @@ Breakpoint argument choices:
     @if $breakpoint == tab-land {
         @media(max-width: 75em) {@content}; //1200px
     }
+    @if $breakpoint == mid-desktop {
+        @media(min-width: 93.75em) {@content}; //1500px
+    }
     @if $breakpoint == big-desktop {
         @media(min-width: 112.5em) {@content}; //1800px
     }

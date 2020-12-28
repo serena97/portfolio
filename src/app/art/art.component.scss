@@ -1,3 +1,5 @@
+@import '../shared/abstracts/mixins';
+
 .art {
   min-height: 85vh;
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
@@ -7,15 +9,55 @@
   background-color: #f7f7f7;
 }
 
-.container {
+.art-container {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
-.artwork {
-  height: 500px;
-  width: 800px;
-  padding-right: 5rem;
+.portraits, .portraitLandscapes {
+  height: 40rem;
+  width: 30rem;
+  margin: 1rem;
+}
+
+.landscapes, .abstracts {
+  height: 35rem;
+  width: 45%;
+  margin: 1rem;
+}
+
+@include respond(smallphone) {
+  .portraits, .portraitLandscapes, .landscapes, .abstracts {
+    margin: 1rem 0 1rem 0;
+  }
+}
+
+
+@include respond(tab-port) {
+  .landscapes, .abstracts {
+    width: 90%;
+    height: 37rem;
+  }
+}
+
+@include respond(mid-desktop) {
+  .landscapes, .abstracts {
+    height: 40rem;
+  }
+}
+
+@include respond(big-desktop) {
+  .landscapes, .abstracts {
+    width: 31%;
+    height: 30rem;
+  }
+}
+
+@include respond(phone) {
+  .landscapes, .abstracts {
+    width: 100%;
+  }
 }
 
 img {

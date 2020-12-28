@@ -1,9 +1,21 @@
-<!-- <div class="art"></div> -->
-<div class="container">
-  <div class="artwork" style="flex-grow: 2">
-    <img src="../../assets/insomnia.jpg">
+<h1>LANDSCAPES</h1>
+<div class="art-container">
+  <div class="landscapes" *ngFor="let file of landscapes">
+    <img src='../../assets/artwork/{{file}}' loading="lazy">
   </div>
-  <div class="artwork">
-    <img src="../../assets/still.jpg">
+  <div class="portraitLandscapes" *ngFor="let file of portraitLandscapes">
+    <img src='../../assets/artwork/{{file}}' loading="lazy">
+  </div>
+</div>
+<h1>PORTRAITS</h1>
+<div class="art-container">
+  <div class="portraits" *ngFor="let file of portraits">
+    <img src='../../assets/artwork/{{file}}' loading="lazy">
+  </div>
+</div>
+<h1>ABSTRACTS</h1>
+<div class="art-container">
+  <div class="abstracts" *ngFor="let file of abstracts">
+    <img src='../../assets/artwork/{{file}}' loading="lazy">
   </div>
 </div>
