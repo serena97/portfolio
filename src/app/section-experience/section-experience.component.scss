@@ -184,9 +184,12 @@
                 margin-top: 3rem;
             }
         }
-        padding-left: 8rem; 
-        width: 50%;
 
+        @include respond(tab-port) {
+            padding-left: 0rem;
+            width: 100%;   
+            margin-top: 5rem
+        }
     }
 
     .is-visible {

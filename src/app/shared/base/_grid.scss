@@ -8,6 +8,10 @@
     }
 
     & .work-experience {
-        flex: 2 1 0;
+        flex: 2 1 0; //flex grow flex shrink flex basis 
+
+        @include respond(tab-land) {
+            flex: 1 1 0;
+        }
     }
 }

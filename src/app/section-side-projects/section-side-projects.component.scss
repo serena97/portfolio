@@ -1,0 +1,44 @@
+@import '../shared/abstracts/variables';
+
+
+.github {
+    &__logo {
+        height: 32px;
+        vertical-align: sub;
+        opacity: 0.85;
+    }
+
+    &:hover img{
+        opacity: 1;
+        color: #c930c7;
+        box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
+    }
+}
+
+.section__sideprojects {
+    &--container {
+        margin-left: 5rem;
+    }
+
+    &--text {
+        text-decoration: none;
+        color: $color-text;
+
+        overflow: hidden;
+        background: linear-gradient(to right, rgba(201,48,199,1) 0%, rgba(211,211,235,1) 35%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 200% 100%;
+        background-position: 100%;
+        transition: background-position 275ms ease;
+    }
+
+    &--text:hover {
+        background-position: 0 100%;
+    }
+}
+
+.subheading-arrow {
+    color: $color-secondary-line !important;
+}
