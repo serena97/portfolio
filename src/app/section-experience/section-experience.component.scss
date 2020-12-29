@@ -112,7 +112,7 @@
 }
 
 #citi {
-    cursor: auto;
+    cursor: pointer;
 }
 
 
@@ -191,6 +191,9 @@
 
     .is-visible {
         .work-experience {
+            &--timeframe {
+                font-weight: bold;
+            }
 
             &--details {
                 opacity: 0;

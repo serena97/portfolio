@@ -15,6 +15,8 @@ export class WorkComponent implements OnInit {
 
   ngOnInit() {
     const element = document.getElementById("tree__subtree");
+    const selectionList = document.querySelectorAll('.tree__text--selectable');
+
     const expandTree = () => {
       for (const child of Array.from(element.children)) {
         if (child.className == 'tree__branch--vertical') { //check if style child is there already
@@ -25,6 +27,7 @@ export class WorkComponent implements OnInit {
       }
       element.classList.remove("tree__subtree--collapse");
       element.classList.add("tree__subtree--expand");
+      void this.selectItem(selectionList, document.getElementById("fx"))
     }
 
     const collapseTree = () => {
@@ -68,28 +71,27 @@ export class WorkComponent implements OnInit {
     const target2 = document.querySelector(".show-on-scroll2");
     observer2.observe(target2);
 
-    const selectionList = document.querySelectorAll('.tree__text--selectable');
     selectionList.forEach(element => {
-      element.addEventListener('click', () => selectItem(element));
+      element.addEventListener('click', () => this.selectItem(selectionList, element));
     });
+  }
 
-    async function selectItem(element) {
-      selectionList.forEach(e => e.classList.remove("selected"));
-      const children: any = document.querySelectorAll(".work-experience--child")
-      for (const e of children) {
-        e.style.visibility = "hidden"
-        e.style.height = 0;
-        e.children[0].classList.remove("work-experience--title"); //for animation to rerender
-        e.children[1].classList.remove("work-experience--details");
-      };
-      element.classList.add("selected");
-      let div = document.getElementsByClassName(element.id)[0] as HTMLElement;
-      div.style.visibility = "visible";
-      div.style.height = "100%";
-      void (div.children[0] as HTMLElement).offsetWidth; // https://stackoverflow.com/questions/60686489/what-purpose-does-void-element-offsetwidth-serve
-      void (div.children[1] as HTMLElement).offsetWidth;
-      div.children[0].classList.add("work-experience--title");
-      div.children[1].classList.add("work-experience--details");
-    }
+  async selectItem(selectionList, element) {
+    selectionList.forEach(e => e.classList.remove("selected"));
+    const children: any = document.querySelectorAll(".work-experience--child")
+    for (const e of children) {
+      e.style.visibility = "hidden"
+      e.style.height = 0;
+      e.children[0].classList.remove("work-experience--title"); //for animation to rerender
+      e.children[1].classList.remove("work-experience--details");
+    };
+    element.classList.add("selected");
+    let div = document.getElementsByClassName(element.id)[0] as HTMLElement;
+    div.style.visibility = "visible";
+    div.style.height = "100%";
+    void (div.children[0] as HTMLElement).offsetWidth; // https://stackoverflow.com/questions/60686489/what-purpose-does-void-element-offsetwidth-serve
+    void (div.children[1] as HTMLElement).offsetWidth;
+    div.children[0].classList.add("work-experience--title");
+    div.children[1].classList.add("work-experience--details");
   }
 }
