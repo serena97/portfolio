@@ -10,7 +10,7 @@
         </li>
     </ul>
     <div class="logo">
-        <a href="#">Serena Chan</a>
+        <a routerLink="/work">Serena Chan</a>
         <li class="navigation__item--icon">
             <div>
                 <a href ="https://www.linkedin.com/in/serena97/">
@@ -19,20 +19,20 @@
             </div>
         </li>
     </div>
-    <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
-    <label for="navi-toggle" class="navigation__button">
+    <button [ngClass]="{'checked': shouldOpenMobileMenu, 'navigation__button': true}" (click)="openMobileMenu($event)">
         <span class="navigation__icon">&nbsp;</span>
-    </label>
-    <div class="navigation__background">&nbsp;</div>
-    <div class="navigation__mobile--nav">
-        <div><a href="#"><span class="navigation__mobile--menu"><span
-                        class="navigation__mobile--arrow">&#8594;</span>Art</span></a>
-        </div>
-        <div><a href="#"><span class="navigation__mobile--menu"><span
-                        class="navigation__mobile--arrow">&#8594;</span>Work</span></a>
-        </div>
-        <div><a href="#"><span class="navigation__mobile--menu"><span
-                        class="navigation__mobile--arrow">&#8594;</span>Contact</span></a>
+    </button>
+    <div class="navigation__background" *ngIf="shouldOpenMobileMenu">
+        <div class="navigation__mobile--nav">
+            <div><a routerLink="/work" (click)="openMobileMenu($event)"><span class="navigation__mobile--menu"><span
+                class="navigation__mobile--arrow">&#8594;</span>Work</span></a>
+            </div>
+            <div><a routerLink="/art" (click)="openMobileMenu($event)"><span class="navigation__mobile--menu"><span
+                            class="navigation__mobile--arrow">&#8594;</span>Art</span></a>
+            </div>
+            <div><a href="https://www.linkedin.com/in/serena97/" target="_blank" (click)="openMobileMenu($event)"><span class="navigation__mobile--menu"><span
+                            class="navigation__mobile--arrow">&#8594;</span>Contact</span></a>
+            </div>
         </div>
     </div>
 </div>

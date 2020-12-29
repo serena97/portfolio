@@ -24,8 +24,30 @@
     }
 }
 
-.navigation__checkbox:checked~.navigation__background {
-    transform: scale(80);
+
+.checked {
+    &~.navigation__background {
+        height: 100%;
+        width: 100%;
+        top: 0;
+        position: fixed;
+        right: 0;
+        visibility: visible;
+    }
+
+    .navigation__icon {
+        background-color: transparent;
+    }
+
+    .navigation__icon::before {
+        top: 0;
+        transform: rotate(135deg);
+    }
+
+    .navigation__icon::after {
+        top: 0;
+        transform: rotate(-135deg);
+    }
 }
 
 .navigation {
@@ -52,46 +74,20 @@
         }
 
         &__background {
-            visibility: visible;
+            visibility: hidden;
             height: 6rem;
             width: 6rem;
-            border-radius: 50%;
-            background-color: $color-background;
+            background-color: #191919b0;
             z-index: 100;
             transition: transform .8s cubic-bezier(0.86, 0, 0.07, 1);
-            position: fixed;
-            right: 5rem;
+            border-left: 23px solid $color-secondary-highlight;
         }
     }
     
 
-    &__checkbox {
-        display: none;
-    }
-
-
-    &__checkbox:checked~&__mobile--nav {
-        //TODO: stagger animation
-        display: block;
-    }
-
-    &__checkbox:checked+&__button &__icon {
-        background-color: transparent;
-    }
-
-    &__checkbox:checked+&__button &__icon::before {
-        top: 0;
-        transform: rotate(135deg);
-    }
-
-    &__checkbox:checked+&__button &__icon::after {
-        top: 0;
-        transform: rotate(-135deg);
-    }
 
     &__icon {
         position: relative;
-        margin-top: 3.5rem;
 
         &,
         &::before,
@@ -119,26 +115,13 @@
         }
     }
 
-    &__button:hover &__icon::before {
-        top: -1rem;
-    }
-
-    &__button:hover &__icon::after {
-        top: 1rem;
-    }
-
     &__mobile--nav {
-        position: fixed;
-        top: 10rem;
-        left: 0;
-        z-index: 200;
-        display: none;
-        transition: all .8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        padding-top: 40%;
     }
 
     &__mobile--nav div {
         font-size: 4rem;
-        padding: 4rem;
+        padding: 5rem;
         color: white;
     }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-navigation',
@@ -6,17 +6,18 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./navigation.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class NavigationComponent implements OnInit {
-  active_link: string = 'work'
+export class NavigationComponent {
+  active_link: string = 'work';
+  shouldOpenMobileMenu = false;
 
-  constructor() {
-  }
-  // https://stackoverflow.com/questions/11078509/how-to-increase-the-clickable-area-of-a-a-tag-button
-  ngOnInit(): void {
-  }
 
   onClick(name) {
     this.active_link = name
   }
 
+  openMobileMenu(event) {
+    if(event) {
+      this.shouldOpenMobileMenu = !this.shouldOpenMobileMenu;
+    }
+  }
 }
