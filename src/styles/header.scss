@@ -1,0 +1,36 @@
+@import './shared';
+
+.header {
+    min-height: 80vh;
+    font-size: $font-size-l;
+  
+    @include respond(phone) {
+        min-height: 90vh;
+    }
+
+    & span {
+        color: $color-layout;
+    }
+    
+    &__text-box {
+        @include respond(tab-port) {
+            position: relative;
+            transform: translate(0%, 0%);
+            padding: 2.5rem;
+            left: 0;
+        }
+
+        @include respond(phone) {
+            position: relative;
+            transform: translate(0%, 15%);
+            padding: 0rem;
+            left: 0;
+        }
+
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -45%);
+        text-align: left;
+    }
+}

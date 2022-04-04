@@ -1,0 +1,36 @@
+@import './shared';
+@import './header';
+@import './nav';
+
+html {
+    // This defines how much 1rem (relative to font size of root element) is 
+    // ems is best for media query
+    font-size: 62.5%;
+
+    @include respond(phone) {
+        font-size: 50%; // 1rem = 8px, 8/16 = 50%
+    }
+
+    @include respond(tab-land) { // width < 1200
+        font-size: 56.25%; // 1 rem = 9px, 9/16 = 56.25%
+    }
+
+    @include respond(tab-port) { // width < 900. this comes after tab-land as the last css is always used
+        font-size: 60%; // 1rem = 10px, 10/16 
+    }
+
+    @include respond(big-desktop) { // width > 1800
+        font-size: 90%; // 1 rem = 12px, 12/16 = 75%
+    }
+}
+
+body {
+    box-sizing: border-box;
+    background-color: $color-background;
+    
+    font-family: 'Space Mono', monospace;
+    font-weight: 400;
+    color: $color-text;
+    padding: 3rem;
+    box-sizing: border-box;
+}

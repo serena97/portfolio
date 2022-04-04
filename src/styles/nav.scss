@@ -1,0 +1,91 @@
+@import './shared';
+
+.navigation {
+    font-size: $font-size-s;
+    
+    &__item {
+        padding: $nav-item-padding;
+        display: inline-block;
+        transition: all .4s;
+
+        &:hover {
+            -webkit-transform: translateY(-1rem);
+            transform: translateY(-1rem);
+            cursor: pointer;
+        }
+
+        &:hover .navigation__link {
+            background-position: 100%;
+        }
+
+        @keyframes customwidth {
+            0% {
+                width: 0%;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+
+        &:hover .navigation__link::after {
+            content: '';
+            display: block;
+            margin-top: 10px;
+            height: 3px;
+            background: $color-line;
+            animation: customwidth .5s;
+        }
+    }
+
+    & .navigation__link {
+        color: $color-text;
+        text-decoration: none;
+        
+        &:link,
+        &:visited {
+            background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-serena 50%);
+            background-size: 250%;
+            transition: all .5s;
+        }
+
+        &:hover,
+        &:active {
+            background-position: 100%;
+            -webkit-transform: translateY(-1rem);
+            transform: translateY(-1rem);
+        }
+
+        &--active {
+            background-color: $color-serena;
+        }
+
+        &--active::after {
+            content: '';
+            display: block;
+            margin-top: 10px;
+            height: 3px;
+            background: $color-line;
+        }
+    }
+
+    & .logo {
+        @include respond(phone) {
+            float: left;
+            margin-top: 2rem;
+        }
+        margin-top: calc($nav-item-padding / 2);
+        float: right;
+    
+        & a {
+            text-decoration: none;
+            color: $color-text;
+            background-color: $color-serena;
+        }
+
+        & .icon {
+            font-size: 3rem;
+        }
+    }
+}
+

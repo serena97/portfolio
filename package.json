@@ -1,0 +1,23 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "sass": "^1.49.11"
+  },
+  "scripts": {
+    "build": "sass src/styles",
+    "build-w": "sass --watch src/styles"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/serena97/portfolio.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/serena97/portfolio/issues"
+  },
+  "homepage": "https://github.com/serena97/portfolio#readme"
+}
