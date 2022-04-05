@@ -5,28 +5,17 @@ $color-layout: #6AEDFF;
 $color-serena: #C930C7;
 $color-line: #6871ff;
 
-$font-size-l: 4rem;
-$font-size-s: 2rem;
+$font-size-xl: 2.5rem;
+$font-size-l: 2rem;
+$font-size-m: 1rem;
+$font-size-s: 0.75rem;
 
-$nav-item-padding: 3rem;
+$nav-item-padding: 2rem;
 
-@mixin respond($breakpoint) {
-    @if $breakpoint == smallphone {
-        @media(max-width: 35em) {@content}; //600px
-    }
-    @if $breakpoint == phone {
-        @media(max-width: 37.5em) {@content}; //600px
-    }
-    @if $breakpoint == tab-port {
-        @media(max-width: 56.25em) {@content}; //900px
-    }
-    @if $breakpoint == tab-land {
-        @media(max-width: 75em) {@content}; //1200px
-    }
-    @if $breakpoint == mid-desktop {
-        @media(min-width: 93.75em) {@content}; //1500px
-    }
-    @if $breakpoint == big-desktop {
-        @media(min-width: 112.5em) {@content}; //1800px
-    }
-}
+$phone-width: 320px;
+$tab-port-width: 600px;
+$tab-land-width: 800px;
+$desktop-width: 1200px;
+
+$z-index-icon: 5;
+$mob-icon-width: 60px;

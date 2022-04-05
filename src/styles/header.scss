@@ -1,36 +1,52 @@
 @import './shared';
 
 .header {
-    min-height: 80vh;
-    font-size: $font-size-l;
-  
-    @include respond(phone) {
-        min-height: 90vh;
-    }
+    // mobile first
+
+    font-size: $font-size-xl;
+
+    // @media screen and (min-width: $tab-port-width) {
+    //     font-size: $font-size-l;
+    // }
 
     & span {
         color: $color-layout;
     }
     
     &__text-box {
-        @include respond(tab-port) {
-            position: relative;
-            transform: translate(0%, 0%);
-            padding: 2.5rem;
-            left: 0;
-        }
+        // position: absolute;
+        // top: 45%;
+        // left: 40%;
+        // transform: translate(-40%, -45%);
+        // text-align: left;
 
-        @include respond(phone) {
-            position: relative;
-            transform: translate(0%, 15%);
-            padding: 0rem;
-            left: 0;
-        }
-
-        position: absolute;
-        top: 45%;
-        left: 50%;
-        transform: translate(-50%, -45%);
         text-align: left;
+        padding-top: 3rem;
+        max-inline-size: 10ch;
+    }
+
+    &__vertical-arrow {
+        border-left: 3px solid $color-secondary-text;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1;
+
+        &::after {
+            border-color: $color-secondary-text;
+            border-bottom-style: solid;
+            border-bottom-width: 3px;
+            border-right-style: solid;
+            border-right-width: 3px;
+            content: '';
+            display: inline-block;
+            height: 20px;
+            left: -13px;
+            position: absolute;
+            bottom: 3px;
+            width: 20px;
+            transform: rotate(45deg);
+        }
     }
 }
