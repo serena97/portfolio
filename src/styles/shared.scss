@@ -2,8 +2,8 @@ $color-background: #191919;
 $color-text: #ffffff;
 $color-secondary-text: #00C200;
 $color-layout: #6AEDFF;
-$color-serena: #C930C7;
-$color-line: #6871ff;
+// $color-serena: #C930C7;
+// $color-line: #6871ff;
 
 $font-size-xl: 2.5rem;
 $font-size-l: 2rem;
@@ -19,3 +19,12 @@ $desktop-width: 1200px;
 
 $z-index-icon: 5;
 $mob-icon-width: 60px;
+
+section .title {
+    font-size: $font-size-xl;
+    text-align: center;
+
+    & code {
+        color: $color-secondary-text;
+    }
+}

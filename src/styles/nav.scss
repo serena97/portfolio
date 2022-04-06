@@ -74,13 +74,14 @@
     // }
 
     & .logo {
-        padding-top: 2rem;
+        font-weight: 700;
+        padding-top: 2.5rem;
         // margin-top: calc($nav-item-padding / 2);
         // float: right;
         & a {
             text-decoration: none;
-            color: $color-text;
-            background-color: $color-serena;
+            color: black;
+            background-color: $color-secondary-text;
         }
 
         // & .icon {
@@ -93,7 +94,7 @@
         width: $mob-icon-width;
         position: fixed;
         top: 0;
-        right: 1px;
+        right: 0;
         z-index: $z-index-icon;
     }
 }
