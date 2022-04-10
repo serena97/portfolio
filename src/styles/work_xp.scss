@@ -1,0 +1,138 @@
+@import './shared';
+
+$branch-height: 2rem;
+$branch-width: 2rem;
+
+@mixin increase-height-animation($height) {
+    animation: increase-height 2s;
+    @keyframes increase-height{
+        100% {
+            height: $height;
+        }
+    }
+}
+@mixin increase-width-animation {
+    display: flex;
+    align-items: center;
+    animation: increase-width 2s;
+    animation-fill-mode: both !important;
+    @keyframes increase-width {
+        0% {
+            opacity: 0;
+            width: 0;
+        }
+
+        66% {
+            opacity: 1;
+        }
+        
+        100% {
+            width: $branch-width;
+        }
+    }
+}
+
+@mixin tree-branch-line($width, $height) {
+    & {
+        width: $width;
+        height: $height;
+        background: $color-secondary-text;
+        animation-fill-mode: forwards;
+    }
+}
+
+.container {
+    padding-left: 2rem;
+}
+
+.tree {
+    white-space: nowrap; 
+    & .tree__branch--vertical:after {
+        display: inline;
+        position: absolute;
+        content: '';
+        margin-left: 5rem;
+    }
+
+}
+
+.is-visible .tree {
+    // important to have the padding even when not visible or else rendering will be wrong
+    
+    &__text {
+        cursor: pointer;
+        margin-left: $branch-width + .5rem;
+    }
+
+    &__text:active {
+        background-color: $color-secondary-text;
+        color: $color-background;
+    }
+
+    &__subtree {
+        &--expand {
+            opacity: 1;
+            & .tree__branch--vertical {
+                animation-delay: 2s;
+            }
+
+            & .tree__branch--vertical:first-child:after {
+                margin-top: 20px;
+            }
+
+            & .tree__branch--vertical:after {
+                @include tree-branch-line(3px, 0px);
+                @include increase-height-animation($branch-height);
+                animation-delay: 2s;
+            }
+
+            & .tree__branch--horizontal {
+                @include tree-branch-line(0px, 3px);
+                @include increase-width-animation;
+                animation-delay: 3s;
+                margin-left: 5rem;
+            }
+
+            & .tree__text {
+                @include fade-in;
+            }
+        }
+
+        &--collapse {
+            opacity: 0;
+            height: 0;
+        }
+    }
+
+    &__subtree--collapse+.tree__branch--vertical {
+        @keyframes move-up-illusion {
+            0% {
+                height: 12rem;
+            }
+
+            100% {
+                height: 6rem;
+            }
+        }
+
+        animation: move-up-illusion 2s;
+        animation-fill-mode: forwards;
+    }
+
+    & li {
+        list-style: none;
+    }
+
+    &__branch {
+        &--vertical {
+            @include tree-branch-line(3px, 0px);
+            @include increase-height-animation($branch-height);
+        }
+
+        &--horizontal {
+            @include tree-branch-line(0px, 3px);
+            @include increase-width-animation;
+            animation-delay: 1s;
+        }
+    }
+}

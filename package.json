@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "devDependencies": {
-    "sass": "^1.49.11"
+    "sass": "^1.49.11",
+    "typescript": "^4.6.3"
   },
   "scripts": {
-    "build": "sass src/styles",
-    "build-w": "sass --watch src/styles"
+    "build": "sass src/styles && tsc src/script/*.ts",
+    "sass-w": "sass --watch src/styles",
+    "tsc-w": "tsc --watch src/scripts/*.ts --outDir src"
   },
   "repository": {
     "type": "git",
