@@ -65,11 +65,46 @@ function initShowOnScroll() {
     const target = document.querySelector(".show-on-scroll");
     observer.observe(target);
 
-    const selectionList = document.querySelectorAll('.tree__text--selectable');
+    const selectionList = document.querySelectorAll('.tree__text');
 
     selectionList.forEach(element => {
-        element.addEventListener('click', () => this.selectItem(selectionList, element));
+        element.addEventListener('click', () => selectItem(selectionList, element));
     });
+}
+
+async function selectItem(selectionList, element: Element): Promise<void> {
+    selectionList.forEach(e => e.classList.remove("selected"));
+    element.classList.add("selected");
+    const id = element.id
+    const container = document.getElementById('xp-description')
+    container.textContent = ''
+
+    //animate typewriter with js
+    const titleNode = document.createElement('div')
+    titleNode.classList.add('xp-description__title')
+    const title = [work_exp[id].title, ` @ ${work_exp[id].name}`]
+
+    typeWriter(titleNode, title[0]).then(x => {
+        const titleSubnode = document.createElement('span')
+        titleSubnode.classList.add('xp-description__name')
+        titleNode.appendChild(titleSubnode)
+        typeWriter(titleSubnode, title[1])
+    })
+    
+    container.appendChild(titleNode)
+}
+
+
+async function typeWriter(titleNode, title): Promise<void> {
+    async function task(i) { // 3
+        await new Promise(res => setTimeout(res, 200));
+        titleNode.innerHTML += title[i]
+        console.log(`Task ${i} done!`);
+    }
+
+    for(var i = 0; i < title.length; i++) {
+        await task(i)
+    }
 }
 
 function main() {

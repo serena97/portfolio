@@ -2,7 +2,7 @@ $color-background: #191919;
 $color-text: #ffffff;
 $color-secondary-text: #00C200;
 $color-layout: #6AEDFF;
-// $color-serena: #C930C7;
+$color-serena: #C930C7;
 // $color-line: #6871ff;
 
 $font-size-xl: 2.5rem;
@@ -39,5 +39,31 @@ section .title {
         100% {
             opacity: 1;
         }
+    }
+}
+
+@keyframes typing {
+    0% {
+        width: 0;
+        border-right: 0.1rem solid $color-serena;
+    }
+
+    99.9% {
+        border-right: 0.1rem solid $color-serena;
+    }
+
+    100% {
+        border: none;
+    }
+}
+
+@keyframes blink-caret {
+
+    from, to {
+        border-color: transparent
+    }
+
+    20% {
+        border-color: $color-serena;
     }
 }

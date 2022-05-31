@@ -64,9 +64,13 @@ $branch-width: 2rem;
         margin-left: $branch-width + .5rem;
     }
 
-    &__text:active {
+    &__text.selected {
         background-color: $color-secondary-text;
         color: $color-background;
+    }
+
+    &__text .title {
+        animation: typing 2s steps(40, end), blink-caret 0.75s step-end infinite;
     }
 
     &__subtree {
@@ -135,4 +139,20 @@ $branch-width: 2rem;
             animation-delay: 1s;
         }
     }
+}
+
+#xp-description {
+    margin-top: 5rem;
+
+    & .xp-description__title {
+        animation: typing 2s steps(1, end), blink-caret 0.75s step-end infinite;
+        text-overflow: hidden;
+        width: 100%;
+        display: inline;
+        & .xp-description__name {
+            color: $color-layout;
+        }
+
+    }
+    
 }
