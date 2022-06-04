@@ -1,0 +1,37 @@
+@import './shared';
+
+.projects {
+    &__item {
+        display: block;
+        height: 100%;
+        border: $color-secondary-text 1px solid;
+        margin-top: 12px;
+        margin-left: 5px;
+        margin-right: 5px;
+        transition: 0.4s;
+    }
+
+    &__item:hover {
+        transform: translate(0, -3px);
+        box-shadow: 0 2px 8px rgba(253, 253, 253, 0.87);
+    }
+
+    &__item:nth-child(2) {
+        border:$color-layout 1px solid;
+    }
+
+    &--arrow {
+        margin-left: 5px;
+        margin-right: 5px;
+        color: $color-secondary-text;
+    }
+
+    img {
+        width: 100%;
+        object-fit: contain;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+        max-height: 250px;
+    }
+}

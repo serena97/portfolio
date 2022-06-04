@@ -64,7 +64,7 @@ function initShowOnScroll() {
     observer.observe(target);
 
     const selectionList = document.querySelectorAll('.tree__text');
-
+    selectItem(selectionList, selectionList[0])
     selectionList.forEach(element => {
         element.addEventListener('click', () => selectItem(selectionList, element));
     });
