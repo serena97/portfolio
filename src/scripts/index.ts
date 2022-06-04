@@ -48,20 +48,18 @@ const work_exp = {
 }
 
 function initShowOnScroll() {
-    const callback = (entries) => { // shouldn't use function(entries), or else keyword this will refer to callback https://stackoverflow.com/questions/50097907/cannot-access-this-from-nested-function-in-angular4
+    const callback = (entries) => {
         entries.forEach((entry) => {
+            console.log(entry)
           if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible"); // if visible is set remove it, otherwise add it
-          } else {
+            entry.target.classList.add("is-visible");
+          } else if (entry.boundingClientRect.y > 0) { // so the animation only happens when you scroll from top to bottom
             entry.target.classList.remove("is-visible");
-            for (const v of this.verticalBranches) {
-              v.innerHTML = "#tree__subtree .tree__branch--vertical:after { animation-delay: 2s; }";
-            }
           }
         });
     };
 
-    const observer = new IntersectionObserver(callback); //{ root: document.body }
+    const observer = new IntersectionObserver(callback);
     const target = document.querySelector(".show-on-scroll");
     observer.observe(target);
 
@@ -84,20 +82,44 @@ async function selectItem(selectionList, element: Element): Promise<void> {
     titleNode.classList.add('xp-description__title')
     const title = [work_exp[id].title, ` @ ${work_exp[id].name}`]
 
-    typeWriter(titleNode, title[0]).then(x => {
+    const detailsNode = document.createElement('div')
+
+
+    typeWriter(titleNode, title[0])
+    .then(_ => {
         const titleSubnode = document.createElement('span')
         titleSubnode.classList.add('xp-description__name')
         titleNode.appendChild(titleSubnode)
-        typeWriter(titleSubnode, title[1])
+        return typeWriter(titleSubnode, title[1])
+    }).then(_ => {
+        detailsNode.classList.add('xp-description__details')
+        const durationNode = document.createElement('div')
+        durationNode.innerHTML = work_exp[id].duration
+        detailsNode.appendChild(durationNode)
+        const ulNode = document.createElement('ul')
+        work_exp[id].description.forEach(data => {
+            const li = document.createElement('li')
+            li.innerHTML = data
+            ulNode.appendChild(li)
+        })
+        detailsNode.appendChild(ulNode)
     })
-    
+
     container.appendChild(titleNode)
+    container.appendChild(detailsNode)
 }
 
+function createHTMLList(list) {
+    list.forEach(data => {
+        const li = document.createElement('li')
+        li.innerHTML = data
+        li.appendChild(li)
+    })
+}
 
 async function typeWriter(titleNode, title): Promise<void> {
-    async function task(i) { // 3
-        await new Promise(res => setTimeout(res, 200));
+    async function task(i) {
+        await new Promise(res => setTimeout(res, 50));
         titleNode.innerHTML += title[i]
         console.log(`Task ${i} done!`);
     }

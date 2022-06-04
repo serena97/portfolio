@@ -152,7 +152,13 @@ $branch-width: 2rem;
         & .xp-description__name {
             color: $color-layout;
         }
+    }
+    & .xp-description__title + .xp-description__details {
+        @include fade-in;
+    }
 
+    & ul {
+        padding-inline-start: 1rem;
     }
     
 }

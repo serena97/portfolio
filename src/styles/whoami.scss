@@ -1,24 +1,19 @@
 @import './shared';
 
-.profile img {
-    width: 200px;
-    height: 200px;
-    border: $color-layout solid 4px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+.whoami {
+    .profile img {
+        width: 200px;
+        height: 200px;
+        border: $color-layout solid 4px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .bio ul {
+        columns: 2;
+    }
 }
 
-.bio ul {
-    columns: 2;
-    list-style: none;
-}
 
-li::before {
-    content: ">"; 
-    color: $color-secondary-text;
-    display: inline-block;
-    width: 1em;
-    margin-left: -1em
-}
   

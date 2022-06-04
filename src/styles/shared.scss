@@ -29,6 +29,20 @@ section .title {
     }
 }
 
+section {
+    ul {
+        list-style: none;
+    }
+
+    li::before {
+        content: ">"; 
+        color: $color-secondary-text;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em
+    }
+}
+
 @mixin fade-in($time: 2s) {
     animation: fade-in $time;
     @keyframes fade-in{
@@ -65,5 +79,16 @@ section .title {
 
     20% {
         border-color: $color-serena;
+    }
+}
+
+@keyframes moveInRightDelay {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
     }
 }
