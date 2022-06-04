@@ -4,7 +4,7 @@
     &__item {
         display: block;
         height: 100%;
-        border: $color-secondary-text 1px solid;
+        border: $color-secondary-text 2px solid;
         margin-top: 12px;
         margin-left: 5px;
         margin-right: 5px;
@@ -12,12 +12,11 @@
     }
 
     &__item:hover {
-        transform: translate(0, -3px);
-        box-shadow: 0 2px 8px rgba(253, 253, 253, 0.87);
+        @include hover;
     }
 
     &__item:nth-child(2) {
-        border:$color-layout 1px solid;
+        border:$color-layout 2px solid;
     }
 
     &--arrow {
@@ -32,6 +31,6 @@
         height: auto;
         margin-left: auto;
         margin-right: auto;
-        max-height: 250px;
+        max-height: 150px;
     }
 }

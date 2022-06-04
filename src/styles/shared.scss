@@ -41,6 +41,16 @@ section {
         width: 1em;
         margin-left: -1em
     }
+
+    & .logo {
+        font-weight: 700;
+        padding-top: 2.5rem;
+        & a {
+            text-decoration: none;
+            color: black;
+            background-color: $color-secondary-text;
+        }
+    }
 }
 
 @mixin fade-in($time: 2s) {
@@ -54,6 +64,11 @@ section {
             opacity: 1;
         }
     }
+}
+
+@mixin hover {
+    transform: translate(0, -3px);
+    box-shadow: 0 2px 8px rgba(253, 253, 253, 0.87);
 }
 
 @keyframes typing {

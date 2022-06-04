@@ -4,6 +4,7 @@
 @import './whoami';
 @import './work_xp';
 @import './projects';
+@import './get_in_touch';
 
 html {
     // makes text bigger when screen bigger, makes text smaller when screen smaller
@@ -29,6 +30,7 @@ section {
   width: 100%;
   min-height: 100vh;
   position: relative;
+  padding-top: 3rem;
 }
 
 img {

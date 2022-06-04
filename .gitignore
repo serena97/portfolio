@@ -2,4 +2,4 @@ node_modules
 src/styles/**.css.map
 src/styles/**.css
 *.js
-assets/**.png
+assets

@@ -1,0 +1,58 @@
+@import './shared';
+
+.get_in_touch {
+
+    .title {
+        text-align: left; //overwrite shared
+    }
+
+    & .emoji {
+        font-size: 5rem;
+        text-align: center;
+    }
+
+    .button {
+        border: $color-secondary-text 5px solid;
+        margin: 1rem auto;
+        text-align: center;
+        padding: 1rem;
+        width: 50%;
+        transition: 0.4s;
+    }
+
+    & a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .button:hover {
+        @include hover;
+    }
+
+    .icons {
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        align-items: normal;
+        align-content: normal;
+
+        & a {
+            display: block;
+            flex-grow: 0;
+            flex-shrink: 1;
+            flex-basis: auto;
+            align-self: auto;
+            order: 0;
+        }
+    }
+
+    .icons img {
+        height: 48px;
+        transition: 0.4s;
+        &:hover {
+            @include hover;
+        }
+    }
+}
