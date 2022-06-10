@@ -18,6 +18,8 @@
         padding: 1rem;
         width: 50%;
         transition: 0.4s;
+        cursor: pointer;
+        border-radius: $border-radius;
     }
 
     & a {

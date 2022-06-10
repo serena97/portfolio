@@ -3,7 +3,7 @@ $color-text: #ffffff;
 $color-secondary-text: #00C200;
 $color-layout: #6AEDFF;
 $color-serena: #C930C7;
-// $color-line: #6871ff;
+$color-line: #6871ff;
 
 $font-size-xl: 2.5rem;
 $font-size-l: 2rem;
@@ -18,7 +18,10 @@ $tab-land-width: 800px;
 $desktop-width: 1200px;
 
 $z-index-icon: 5;
+$z-index-mob-menu: 4;
 $mob-icon-width: 60px;
+
+$border-radius: 4px;
 
 section .title {
     font-size: $font-size-xl;
@@ -30,6 +33,7 @@ section .title {
 }
 
 section {
+
     ul {
         list-style: none;
     }
@@ -105,5 +109,24 @@ section {
     100% {
         opacity: 1;
         transform: translate(0);
+    }
+}
+
+
+@keyframes slide-in {
+    0% {
+      -webkit-transform: translateX(100%);
+    }
+    100% {
+      -webkit-transform: translateX(0%);
+    }
+}
+
+@keyframes slide-out {
+    0% {
+      -webkit-transform: translateX(0%);
+    }
+    100% {
+      -webkit-transform: translateX(100%);
     }
 }

@@ -4,6 +4,7 @@
     &__item {
         display: block;
         height: 100%;
+        border-radius: $border-radius;
         border: $color-secondary-text 2px solid;
         margin-top: 12px;
         margin-left: 5px;

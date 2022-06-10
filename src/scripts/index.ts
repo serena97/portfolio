@@ -52,6 +52,7 @@ function initShowOnScroll() {
         entries.forEach((entry) => {
             console.log(entry)
           if (entry.isIntersecting) {
+            selectItem(selectionList, selectionList[0])
             entry.target.classList.add("is-visible");
           } else if (entry.boundingClientRect.y > 0) { // so the animation only happens when you scroll from top to bottom
             entry.target.classList.remove("is-visible");
@@ -64,7 +65,6 @@ function initShowOnScroll() {
     observer.observe(target);
 
     const selectionList = document.querySelectorAll('.tree__text');
-    selectItem(selectionList, selectionList[0])
     selectionList.forEach(element => {
         element.addEventListener('click', () => selectItem(selectionList, element));
     });
@@ -129,8 +129,32 @@ async function typeWriter(titleNode, title): Promise<void> {
     }
 }
 
+function initMenuListener() {
+    const target: Element = document.querySelector(".mob-icon");
+    const background: HTMLElement = document.querySelector(".background");
+    let closing = false;
+    background.onanimationend = () => {
+        if(closing) {
+            // remove .checked after adding .closing so that we don't immediately jump to display: none for background
+            target.classList.remove('checked');
+            background.classList.remove('closing');
+        }
+    };
+    target.addEventListener('click', () => {
+        if(target.classList.contains('checked')) {
+            closing = true;
+            background.classList.add('closing'); // this triggers onanimationend
+        } else {
+            closing = false;
+            target.classList.add('checked');
+        }
+    })
+}
+
+
 function main() {
     initShowOnScroll();
+    initMenuListener();
 }
 
 main();
