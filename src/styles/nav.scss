@@ -101,93 +101,100 @@
             pointer-events: none;
         }
     }
-}
 
-.background {
-    display: none;
-    flex-direction: column;
-    justify-content: space-around;
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-
-    &__block {
-        background: rgba(25, 25, 25, 0.6);
-        text-align: center;
-        margin-left: 1.6rem;
-        margin-right: 1.6rem;
-        font-size: $font-size-l;
-        padding: 1rem 2rem 1rem 2rem;
-        border: $color-layout 3px solid;
-        z-index: $z-index-mob-menu + 1;
-        border-radius: $border-radius;
-        cursor: pointer;
-
-        @include hover;
-        & span {
-            float: right;
+    .background {
+        display: none;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+    
+        &__block {
+            background: rgba(25, 25, 25, 0.6);
+            text-align: center;
+            margin-left: 1.6rem;
+            margin-right: 1.6rem;
+            font-size: $font-size-l;
+            padding: 1rem 2rem 1rem 2rem;
+            border: $color-layout 3px solid;
+            border-radius: $border-radius;
+            cursor: pointer;
+    
+            @include hover;
+            & span {
+                float: right;
+            }
         }
     }
-}
 
-.checked + .background {
-    display: flex;
-    z-index: $z-index-mob-menu;
-    overflow: hidden;
-    background: $color-background;
-    font-size: 52px;
-    animation: slide-in 0.5s forwards;
-}
-
-.background.closing {
-    animation: slide-out 0.5s forwards;
-}
-
-// adapted from https://codepen.io/hylobates-lar/pen/bGEQXgm
-@mixin dots($count) {
-    $text-shadow: ();
-    $colors: $color-secondary-text, $color-layout, $color-serena, $color-line;
-    @for $i from 0 through $count {
-      $text-shadow: $text-shadow,
-                   (-.5+(random()) * 3) + em
-                   (-.5+(random()) * 3) + em
-                   7px
-                   nth($colors, ($i % length($colors)) + 1)
+    .background a {
+        text-decoration: none;
+        color: $color-text;
+        z-index: $z-index-mob-menu + 1;
     }
-    text-shadow: $text-shadow;
-}
-
-.checked + .background::before, .checked + .background::after {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 3em;
-    height: 3em;
-    content: '.';
-    mix-blend-mode: screen;
-    animation: 44s -27s move infinite ease-in-out alternate;
-}
-
-.checked + .background::before {
-    @include dots(40);
-    animation-duration: 44s;
-    animation-delay: -27s;
-}
-
-.checked + .background::after {
-    @include dots(40);
-    animation-duration: 43s;
-    animation-delay: -32s;
-}
-
-@keyframes move {
-    from {
-        transform: rotate(0deg) scale(12) translateX(-20px);
+    
+    .checked + .background {
+        display: flex;
+        z-index: $z-index-mob-menu;
+        overflow: hidden;
+        background: $color-background;
+        font-size: 52px;
+        animation: slide-in 0.5s forwards;
     }
-    to {
-        transform: rotate(360deg) scale(18) translateX(20px);
+    
+    .background.closing {
+        animation: slide-out 0.5s forwards;
     }
+    
+    // adapted from https://codepen.io/hylobates-lar/pen/bGEQXgm
+    @mixin dots($count) {
+        $text-shadow: ();
+        $colors: $color-secondary-text, $color-layout, $color-serena, $color-line;
+        @for $i from 0 through $count {
+          $text-shadow: $text-shadow,
+                       (-.5+(random()) * 3) + em
+                       (-.5+(random()) * 3) + em
+                       7px
+                       nth($colors, ($i % length($colors)) + 1)
+        }
+        text-shadow: $text-shadow;
+    }
+    
+    .checked + .background::before, .checked + .background::after {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 3em;
+        height: 3em;
+        content: '.';
+        mix-blend-mode: screen;
+        animation: 44s -27s move infinite ease-in-out alternate;
+    }
+    
+    .checked + .background::before {
+        @include dots(40);
+        animation-duration: 44s;
+        animation-delay: -27s;
+    }
+    
+    .checked + .background::after {
+        @include dots(40);
+        animation-duration: 43s;
+        animation-delay: -32s;
+    }
+    
+    @keyframes move {
+        from {
+            transform: rotate(0deg) scale(12) translateX(-20px);
+        }
+        to {
+            transform: rotate(360deg) scale(18) translateX(20px);
+        }
+    }
+    
+    
 }
 

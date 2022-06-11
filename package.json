@@ -11,7 +11,7 @@
   "scripts": {
     "build": "sass src/styles && tsc src/scripts/*.ts",
     "sass-w": "sass --watch src/styles",
-    "tsc-w": "tsc --watch src/scripts/*.ts --outDir src"
+    "tsc-w": "tsc --watch"
   },
   "repository": {
     "type": "git",

@@ -1,3 +1,5 @@
+import { initMenuListener } from './common.js'
+
 const work_exp = {
     "ft": {
         name: "Financial Times",
@@ -127,28 +129,6 @@ async function typeWriter(titleNode, title): Promise<void> {
     for(var i = 0; i < title.length; i++) {
         await task(i)
     }
-}
-
-function initMenuListener() {
-    const target: Element = document.querySelector(".mob-icon");
-    const background: HTMLElement = document.querySelector(".background");
-    let closing = false;
-    background.onanimationend = () => {
-        if(closing) {
-            // remove .checked after adding .closing so that we don't immediately jump to display: none for background
-            target.classList.remove('checked');
-            background.classList.remove('closing');
-        }
-    };
-    target.addEventListener('click', () => {
-        if(target.classList.contains('checked')) {
-            closing = true;
-            background.classList.add('closing'); // this triggers onanimationend
-        } else {
-            closing = false;
-            target.classList.add('checked');
-        }
-    })
 }
 
 
