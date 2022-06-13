@@ -1,7 +1,7 @@
 node_modules
 src/styles/**.css.map
 src/styles/**.css
-*.js
+src/*.js
 *.js.map
 assets
 .vscode

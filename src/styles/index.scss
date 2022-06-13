@@ -6,35 +6,3 @@
 @import './projects';
 @import './get_in_touch';
 
-html {
-    // makes text bigger when screen bigger, makes text smaller when screen smaller
-    // useful for h1 - p
-    font-size: clamp(1rem, 0.75rem + 1.5vw, 2rem);
-    // padding: 1rem;
-    margin-left: 1.6rem;
-    margin-right: 1.6rem;
-}
-
-body {
-    box-sizing: border-box;
-    background-color: $color-background;
-    margin: 0px; //chrome has 8px by default
-
-    font-family: 'Space Mono', monospace;
-    font-weight: 400;
-    color: $color-text;
-    box-sizing: border-box;
-}
-
-section {
-  width: 100%;
-  min-height: 100vh;
-  position: relative;
-  padding-top: 3rem;
-}
-
-img {
-    max-inline-size: 100%;
-    block-size: auto;
-    object-fit: cover;
-}

@@ -2,32 +2,74 @@
 <html>
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" rel="noopener" target="_blank" href="styles/index.css"> <!--TODO: refactor to seperate css file-->
+    <link rel="stylesheet" type="text/css" rel="noopener" target="_blank" href="styles/art.css">
     <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Serena Chan</title>
+    <link rel="stylesheet" href="../photoswipe/dist/photoswipe.css">
 </head>
 <body>
-    <nav class="navigation">
-        <!-- <li class="navigation__item">
-            <a class="navigation__link" href="#">Work</a>
-        </li>
-        <li class="navigation__item">
-            <a class="navigation__link" href="./art.html">Art</a>
-        </li> -->
-        <div class="mob-icon">
-            <object data="../assets/mob-icon.svg"></object>
-        </div>
-        <div class="background">
-            <a href="./index.html#"><div class="background__block">Work <span>🔧</span></div></a>
-            <a href="#"><div class="background__block">Art <span>🎨</span></div></a>
-            <a href="./index.html#contact"><div class="background__block">Contact <span>🤝</span></div></a>
-        </div>
-        <div class="logo">
-            <a href="#">Serena Chan</a>
-            <!-- <span class="icon">&#128296;</span> -->
-        </div>
-    </nav>
-    <script type="module" src="./art.js" defer></script>
+    <section>
+        <nav class="navigation">
+            <!-- <li class="navigation__item">
+                <a class="navigation__link" href="#">Work</a>
+            </li>
+            <li class="navigation__item">
+                <a class="navigation__link" href="./art.html">Art</a>
+            </li> -->
+            <div class="mob-icon">
+                <object data="../assets/mob-icon.svg"></object>
+            </div>
+            <div class="background">
+                <a href="./index.html#"><div class="background__block">Work <span>🔧</span></div></a>
+                <a href="#"><div class="background__block">Art <span>🎨</span></div></a>
+                <a href="./index.html#contact"><div class="background__block">Contact <span>🤝</span></div></a>
+            </div>
+            <div class="logo">
+                <a href="#">Serena Chan</a>
+                <!-- <span class="icon">&#128296;</span> -->
+            </div>
+        </nav>
+        <div class="pswp-gallery" id="my-gallery">
+            <a
+              href="https://cdn.photoswipe.com/photoswipe-demo-images/photos/1/img-2500.jpg"
+              data-pswp-width="1875"
+              data-pswp-height="2500"
+              target="_blank"
+            >
+              <img
+                src="https://cdn.photoswipe.com/photoswipe-demo-images/photos/1/img-200.jpg"
+                alt=""
+              />
+            </a>
+            <a
+              href="https://cdn.photoswipe.com/photoswipe-demo-images/photos/2/img-2500.jpg"
+              data-pswp-width="1669"
+              data-pswp-height="2500"
+              target="_blank"
+            >
+              <img
+                src="https://cdn.photoswipe.com/photoswipe-demo-images/photos/2/img-200.jpg"
+                alt=""
+              />
+            </a>
+            <a
+              href="https://cdn.photoswipe.com/photoswipe-demo-images/photos/3/img-2500.jpg"
+              data-pswp-width="2500"
+              data-pswp-height="1666"
+              target="_blank"
+            >
+              <img
+                src="https://cdn.photoswipe.com/photoswipe-demo-images/photos/3/img-200.jpg"
+                alt=""
+              />
+            </a>
+          </div>
+    </section>
+
+        
+
+
+    <script type="module" src="./art.js"></script>
 </body>
 </html>
