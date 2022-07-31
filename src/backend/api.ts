@@ -36,6 +36,7 @@ async function getPhotos() {
 
 
 app.get('/getUrls', async (req, res) => {
+    res.set('Access-Control-Allow-Origin', 'http://127.0.0.1:5500')
     res.send(photoUrls)
 })
 
@@ -43,6 +44,4 @@ app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
 
-(async () => {
-    await getPhotos() // called once on app start to not run into rate limiting issues
-})()
+getPhotos() // called once on app start to not run into rate limiting issues
