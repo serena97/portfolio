@@ -3,19 +3,22 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "devDependencies": {
-    "@types/node": "^17.0.36",
+    "@types/node": "^17.0.45",
     "http-server": "^14.1.1",
     "node-env-run": "^4.0.2",
     "sass": "^1.49.11",
-    "typescript": "^4.6.3"
+    "ts-loader": "^9.3.1",
+    "typescript": "^4.7.4",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
   },
   "scripts": {
     "build": "sass src/styles && tsc",
     "sass-w": "sass --watch src/styles",
+    "build-client": "webpack --config webpack.config.js -w",
     "tsc-w": "tsc --watch",
-    "start": "http-server -p 5050",
+    "start": "http-server -p 5500",
     "start-backend": "nodenv src/backend/api.js"
   },
   "repository": {
@@ -29,8 +32,10 @@
   },
   "homepage": "https://github.com/serena97/portfolio#readme",
   "dependencies": {
+    "aws-sdk": "^2.1194.0",
     "axios": "^0.27.2",
     "express": "^4.18.1",
+    "packery": "^2.1.2",
     "photoswipe": "^5.3.0"
   }
 }

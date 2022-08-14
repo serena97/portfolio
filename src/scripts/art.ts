@@ -1,29 +1,57 @@
+import AWS from 'aws-sdk'
 import { initMenuListener } from './common.js'
-import PhotoSwipeLightbox from '../../photoswipe/dist/photoswipe-lightbox.esm.js';
-import PhotoSwipe from '../../photoswipe/dist/photoswipe.esm.js';
-// import PhotoSwipeLightbox from 'photoswipe/lightbox';
-// import 'photoswipe/style.css';
+import PhotoSwipe from 'photoswipe';
+import PhotoSwipeLightbox from 'photoswipe/lightbox';
+
+let s3: AWS.S3;
+const bucketName = 'serena-portfolio';
+
+function initAWS() {
+    // Initialize the Amazon Cognito credentials provider
+    AWS.config.region = 'eu-west-2'; // Region
+    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+        IdentityPoolId: 'eu-west-2:68536981-9bf0-450c-8105-0a9971212e65',
+    });
+    s3 = new AWS.S3({
+        apiVersion: '2006-03-01',
+        params: {Bucket: bucketName}
+    });
+}
+
+function getHtml(template) {
+    return template.join('\n');
+}
+
+async function viewAlbum() {
+    const albumName = 'album'
+    var albumPhotosKey = encodeURIComponent(albumName) + '/';
+    const request = s3.listObjects({Bucket: bucketName, Prefix: albumPhotosKey})
+    const href = request.httpRequest.endpoint.href
+    const bucketUrl = href + bucketName + '/';
+    const response = await request.promise()
+    const photoHtmlStrings = []
+    for(const photo of response.Contents) {
+        const photoKey = photo.Key;
+        console.log('photoKey',photoKey)
+        if(photoKey != 'album/' && !photoKey.endsWith('_thumbnail.jpg')) {
+            const photoUrl = bucketUrl + encodeURIComponent(photoKey);
+            
+            const res = await s3.headObject({Bucket: bucketName, Key: photoKey}).promise()
+            const {height, width} = (res as AWS.S3.HeadObjectOutput).Metadata
+            
+            const thumbnailUrl = bucketUrl + encodeURIComponent(photoKey.replace('.jpg','_thumbnail.jpg'))
+            photoHtmlStrings.push(getHtml([
+                `<a href="${photoUrl}" data-pswp-width="${width}" data-pswp-height="${height}" target="_blank">`,
+                    `<img src="${photoUrl}" alt="" width="256px"/>`,
+                '</a>'
+            ]));
+        }
+    }
+    const galleryDiv = document.getElementById('my-gallery');
+    galleryDiv.innerHTML = getHtml(photoHtmlStrings)
+}
 
 async function initGallery() {
-    const galleryDiv = document.getElementById('my-gallery');
-    const urls: Array<any> = await fetch('http://localhost:3000/getUrls').then(res => res.json())
-    console.log('urls', urls)
-    const children: Node[] = urls.map(url => {
-        const img = document.createElement('img')
-        img.src = url
-
-        const anchor = document.createElement('a');
-        img.onload = function() { 
-            anchor.setAttribute('data-pswp-width', `${img.width}`)
-            anchor.setAttribute('data-pswp-height', `${img.height}`)
-            img.height = img.height / 2
-            img.width = img.width / 2
-        }
-        anchor.href = url
-        anchor.append(img)
-        return anchor
-    });
-    galleryDiv.append(...children)
     const lightbox = new PhotoSwipeLightbox({
         gallery: '#my-gallery',
         children: 'a',
@@ -32,9 +60,11 @@ async function initGallery() {
     lightbox.init();
 }
 
-function main() {
+async function main() {
     initMenuListener();
+    initAWS();
     initGallery();
+    await viewAlbum();
 }
 
-main();
+main().catch();

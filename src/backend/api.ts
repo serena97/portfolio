@@ -1,39 +1,30 @@
-import axios from 'axios';
 import express from 'express';
+import AWS from 'aws-sdk';
 
-const { access_token } = process.env as any
 const app = express()
 const port = 3000
 let photoUrls = []
 
-async function getIds() {
-    const ids = []
-    let url = `https://graph.instagram.com/me/media?fields=id,children,username&access_token=${access_token}`
-    try {
-        while(Boolean(url)) {
-            const res = await axios.get(url)
-            ids.push(...res.data.data.flatMap(d => {
-                 const children = d.children
-                 if(children) {
-                    return children.data.map(x => x.id)
-                 }
-                 return d.id;
-            }))
-            url = res.data.paging.next
-        }
-        console.log(ids)
-        return ids
-    } catch (error) {
-        console.error(error)
+
+function getPhotos() {
+    AWS.config.update({region: 'us-west-2'});
+    // Create S3 service object
+    const s3 = new AWS.S3({apiVersion: '2006-03-01'});
+
+    // Create the parameters for calling listObjects
+    var bucketParams = {
+        Bucket : 'serena-portfolio',
+    };
+
+    // Call S3 to obtain a list of the objects in the bucket
+    s3.listObjects(bucketParams, function(err, data) {
+    if (err) {
+        console.log("Error", err);
+    } else {
+        console.log("Success", data);
     }
+    });
 }
-
-async function getPhotos() {
-    const ids = await getIds();
-    const urls = ids.map(id => `https://graph.instagram.com/${id}?fields=id,children,media_type,media_url,username,timestamp&access_token=${access_token}`)
-    photoUrls = await Promise.all(urls.map(url => axios.get(url).then(x => x.data.media_url)))
-}
-
 
 app.get('/getUrls', async (req, res) => {
     res.set('Access-Control-Allow-Origin', 'http://127.0.0.1:5500')

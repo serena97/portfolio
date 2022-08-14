@@ -1,0 +1,19 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "api.js",
+  "type": "module",
+  "scripts": {
+    "start": "tsc && nodenv api.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1192.0",
+    "node-env-run": "^4.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^18.7.1"
+  }
+}
