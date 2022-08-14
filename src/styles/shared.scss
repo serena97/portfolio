@@ -48,6 +48,10 @@ section {
   min-height: 100vh;
   position: relative;
   padding-top: 3rem;
+
+  @media screen and (min-width: $tab-port-width) {
+    font-size: $font-size-s;
+  }
 }
 
 section:first-child {

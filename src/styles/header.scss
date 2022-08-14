@@ -19,7 +19,9 @@
         // left: 40%;
         // transform: translate(-40%, -45%);
         // text-align: left;
-
+        @media screen and (min-width: $tab-port-width) {
+            max-inline-size: 100%;
+        }
         text-align: left;
         padding-top: 3rem;
         max-inline-size: 10ch;
@@ -30,7 +32,7 @@
         height: 100%;
         position: absolute;
         top: 0;
-        right: -5px;
+        right: calc(45px / 2); // 45px comes from the mob icon
         z-index: 1;
 
         &::after {

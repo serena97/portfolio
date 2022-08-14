@@ -4,6 +4,16 @@
 
     .title {
         text-align: left; //overwrite shared
+
+        @media screen and (min-width: $tab-port-width) {
+            text-align: center;
+        }
+    }
+
+    .description {
+        @media screen and (min-width: $tab-port-width) {
+            text-align: center;
+        }
     }
 
     & .emoji {
@@ -47,6 +57,10 @@
             flex-basis: auto;
             align-self: auto;
             order: 0;
+        }
+
+        @media screen and (min-width: $tab-port-width) {
+            padding-bottom: 1rem;
         }
     }
 

@@ -12,12 +12,34 @@
         transition: 0.4s;
     }
 
+    &__grid {
+        @media screen and (min-width: $tab-port-width) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 20px;
+        }
+    }
+    
+
     &__item:hover {
         @include hover;
     }
 
     &__item:nth-child(2) {
-        border:$color-layout 2px solid;
+        border: $color-layout 2px solid;
+    }
+
+    &__item:nth-child(3) {
+        @media screen and (min-width: $tab-port-width) {
+            border: $color-layout 2px solid;
+        }
+    }
+
+    &__item:nth-child(4) {
+        border: $color-layout 2px solid;
+        @media screen and (min-width: $tab-port-width) {
+            border: $color-secondary-text 2px solid;
+        }
     }
 
     &--arrow {

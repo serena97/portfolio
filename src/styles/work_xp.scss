@@ -43,6 +43,11 @@ $branch-width: 2rem;
 
 .container {
     padding-left: 2rem;
+
+    @media screen and (min-width: $tab-port-width) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 .tree {
@@ -143,6 +148,10 @@ $branch-width: 2rem;
 
 #xp-description {
     margin-top: 5rem;
+    @media screen and (min-width: $tab-port-width) {
+        margin-top: 1rem;
+        font-size: 0.65rem;
+    }
 
     & .xp-description__title {
         animation: typing 2s steps(1, end), blink-caret 0.75s step-end infinite;
