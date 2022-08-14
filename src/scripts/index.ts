@@ -111,14 +111,6 @@ async function selectItem(selectionList, element: Element): Promise<void> {
     container.appendChild(detailsNode)
 }
 
-function createHTMLList(list) {
-    list.forEach(data => {
-        const li = document.createElement('li')
-        li.innerHTML = data
-        li.appendChild(li)
-    })
-}
-
 async function typeWriter(titleNode, title): Promise<void> {
     async function task(i) {
         await new Promise(res => setTimeout(res, 50));

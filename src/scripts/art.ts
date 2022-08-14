@@ -1,10 +1,13 @@
-import AWS from 'aws-sdk'
-import { initMenuListener } from './common.js'
-import PhotoSwipe from 'photoswipe';
-import PhotoSwipeLightbox from 'photoswipe/lightbox';
+import * as AWS from 'aws-sdk'
+import { JSDOM } from 'jsdom';
+import { writeFileSync } from 'fs'
+import {resolve} from 'path';
+import * as pretty from 'pretty'
 
 let s3: AWS.S3;
 const bucketName = 'serena-portfolio';
+const htmlFilePath = resolve(__dirname, '../art.html')
+console.log('htmlFilePath', htmlFilePath)
 
 function initAWS() {
     // Initialize the Amazon Cognito credentials provider
@@ -22,7 +25,13 @@ function getHtml(template) {
     return template.join('\n');
 }
 
-async function viewAlbum() {
+async function getDOM() {
+    const dom = await JSDOM.fromFile(htmlFilePath)
+    return dom
+}
+
+async function addAlbumToHTML() {
+    const dom = await getDOM()
     const albumName = 'album'
     var albumPhotosKey = encodeURIComponent(albumName) + '/';
     const request = s3.listObjects({Bucket: bucketName, Prefix: albumPhotosKey})
@@ -47,24 +56,17 @@ async function viewAlbum() {
             ]));
         }
     }
-    const galleryDiv = document.getElementById('my-gallery');
+    const galleryDiv = dom.window.document.getElementById('my-gallery');
     galleryDiv.innerHTML = getHtml(photoHtmlStrings)
-}
-
-async function initGallery() {
-    const lightbox = new PhotoSwipeLightbox({
-        gallery: '#my-gallery',
-        children: 'a',
-        pswpModule: PhotoSwipe
-    });
-    lightbox.init();
+    // write new dom
+    writeFileSync(htmlFilePath, pretty(dom.serialize()))
 }
 
 async function main() {
-    initMenuListener();
     initAWS();
-    initGallery();
-    await viewAlbum();
+    await addAlbumToHTML();
 }
 
 main().catch();
+
+
