@@ -39,10 +39,10 @@ async function viewAlbum() {
             const res = await s3.headObject({Bucket: bucketName, Key: photoKey}).promise()
             const {height, width} = (res as AWS.S3.HeadObjectOutput).Metadata
             
-            const thumbnailUrl = bucketUrl + encodeURIComponent(photoKey.replace('.jpg','_thumbnail.jpg'))
+            // const thumbnailUrl = bucketUrl + encodeURIComponent(photoKey.replace('.jpg','_thumbnail.jpg'))
             photoHtmlStrings.push(getHtml([
                 `<a href="${photoUrl}" data-pswp-width="${width}" data-pswp-height="${height}" target="_blank">`,
-                    `<img src="${photoUrl}" alt="" width="256px"/>`,
+                    `<img src="${photoUrl}" alt=""/>`,
                 '</a>'
             ]));
         }
