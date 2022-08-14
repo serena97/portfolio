@@ -5,8 +5,8 @@ import {resolve} from 'path';
 import * as pretty from 'pretty'
 
 let s3: AWS.S3;
-const bucketName = 'serena-portfolio';
-const htmlFilePath = resolve(__dirname, '../art.html')
+const bucketName = 'serenachan.io';
+const htmlFilePath = resolve(__dirname, '../../art.html')
 console.log('htmlFilePath', htmlFilePath)
 
 function initAWS() {
